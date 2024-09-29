@@ -1,0 +1,731 @@
+---
+    const { details } = Astro.props
+---
+
+<style>
+    /* PRODUCT DETAILS */
+    .details .row {
+        margin: 0;
+    }
+
+    /* PRODUCT DETAILS START */
+    .details {
+        width: 100%;
+        background: #f8fdff;
+        font-family: sans-serif;
+        /* Tab content */
+    }
+
+    .details h2 {
+        font-size: 22px;
+        line-height: 26px;
+        text-align: left;
+        margin-bottom: 15px;
+        position: relative;
+        font-weight: 300;
+        padding-left: 20px;
+    }
+
+    @media (max-width: 991px) {
+        .details h2 {
+            font-size: 20px;
+        }
+    }
+
+    .details h2 span {
+        color: #0c426d;
+    }
+
+    .details__left {
+        width: 30%;
+        vertical-align: top;
+        padding: 20px 0;
+        background: #def1f9;
+    }
+
+    .details__right {
+        width: 69%;
+        vertical-align: top;
+        padding: 20px 20px;
+    }
+
+    .details__mob {
+        vertical-align: top;
+        padding: 30px 0px;
+    }
+
+    .details .details__content {
+        display: none;
+    }
+
+    .details .details__content .icon {
+        border-right: 1px solid #ebebeb;
+    }
+
+    @media (max-width: 767px) {
+        .details .details__content .icon {
+            border: none;
+        }
+    }
+
+    .details .details__content h4 {
+        font-size: 24px;
+        line-height: 28px;
+        font-weight: 500;
+        border-bottom: 1px solid #ebebeb;
+        display: inline-block;
+        padding-bottom: 10px;
+        margin: 20px 0;
+    }
+
+    @media (max-width: 767px) {
+        .details .details__content h4 {
+            font-size: 20px;
+        }
+    }
+
+    .details .details__content p.alt {
+        font-size: 22px;
+        margin-top: -20px;
+        line-height: 28px;
+    }
+
+    .details .details__content .icon-list {
+        float: left;
+        list-style: none;
+        width: 100%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        padding: 0;
+        margin-top: 0;
+    }
+
+    @media (max-width: 1200px) {
+        .details .details__content .icon-list {
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            -webkit-box-pack: normal;
+            -ms-flex-pack: normal;
+            justify-content: normal;
+        }
+    }
+
+    .details .details__content .icon-list__item {
+        font-family: 'Lato', sans-serif !important;
+        font-size: 22px;
+        line-height: 26px;
+        position: relative;
+        padding-left: 70px;
+        float: left;
+        min-height: 58px;
+        padding-top: 15px;
+        padding-right: 20px;
+        margin: 20px 0;
+        display: flex;
+    }
+
+    @media (max-width: 766px) {
+        .details .details__content .icon-list__item {
+            width: 50%;
+        }
+    }
+
+    .details .details__content .icon-list__item img {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+    .details .details__content__title {
+        font-size: 40px;
+        line-height: 44px;
+        font-weight: 500;
+        width: 100%;
+        margin-top: 0;
+        padding-left: 0;
+    }
+
+    .details p {
+        font-size: 18px;
+        line-height: 26px;
+        margin-bottom: 25px;
+        margin-top: 5px;
+    }
+
+    @media (max-width: 766px) {
+        .details p {
+            font-size: 22px;
+            line-height: 32px;
+        }
+    }
+
+    .details__tabs {
+        overflow: hidden;
+    }
+
+    .details__tabs__item {
+        display: block;
+        background-color: inherit;
+        border: none;
+        outline: none;
+        padding: 14px 16px;
+        padding-left: 30px;
+        -webkit-transition: 0.3s;
+        -o-transition: 0.3s;
+        transition: 0.3s;
+        width: 100%;
+        color: #0c426d;
+        font-size: 20px;
+        font-weight: 500;
+        text-align: left;
+        border-top: 1px solid #dde7eb;
+    }
+
+    .details__tabs__item:first-child {
+        border-top: none;
+    }
+
+    .details__tabs__item.active {
+        color: #ffffff;
+        background: url(https://sun-coast-sciences.imgix.net/button-bg.png) center center no-repeat;
+        background-size: 100%;
+    }
+
+    .details__tabs__item--mob {
+        padding: 6px 10px 10px;
+        font-size: 26px;
+        cursor: pointer;
+    }
+
+    .details__tabs__item--mob--closed {
+        color: #0c426d;
+        border-bottom: 1px solid #0c426d;
+    }
+
+    .details__tabs__item--mob--open {
+        background: #0c426d;
+        color: #fff;
+        margin-bottom: 15px;
+    }
+
+    .img-circle {
+        border-radius: 50%
+    }
+
+    .product-details h3,
+    .benefits h3,
+    .ingredients h3,
+    .guarantee h3,
+    .about h3 {
+        color: #0c426d;
+        font-size: 24px;
+        line-height: 28px;
+        font-weight: 500;
+        text-align: left;
+        position: relative;
+        padding-bottom: 15px;
+        margin-bottom: 10px;
+    }
+
+    .product-details h3:after,
+    .benefits h3:after,
+    .ingredients h3:after,
+    .guarantee h3:after,
+    .about h3:after {
+        content: '';
+        width: 70px;
+        height: 4px;
+        border-radius: 10px;
+        background: #84d8f7;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+    }
+
+    /* END PRODUCT DETAILS  */
+    /* PRODUCT DETAILS */
+</style>
+
+<!-- PRODUCT DETAILS DESKTOP -->
+<section class="details hidden-xs" id="cta-appear">
+    <div class="container" style="margin:auto;">
+        <div class="row hidden-xs" style="display: flex;">
+            <div class="details__left">
+                <h2>
+                    Discover Dr. Rosenberg’s <br />
+                    <span class="blue">Nightly Reboot Ritual</span>
+                </h2>
+                <div class="details__tabs">
+                    <button class="details__tabs__item active" data-selector="product-details">
+                        Product
+                        Details
+                    </button>
+                    <button class="details__tabs__item" data-selector="benefits">Benefits</button>
+                    <button class="details__tabs__item" data-selector="ingredients">Ingredients
+                    </button>
+                    <button class="details__tabs__item" data-selector="guarantee">Our Guarantee
+                    </button>
+                    <button class="details__tabs__item" data-selector="about">About Sun Coast
+                        Sciences
+                    </button>
+                </div>
+            </div>
+            <div class="details__right">
+                <div id="product-details" class="product-details details__content" style="display: block;">
+                    <div class="row flex-row--details">
+                        <div class="col-xs-12 col-sm-12 col-md-8">
+                            <h2 class="details__content__title">Product Details</h2>
+                            <p>
+                                Our #1 supplement for healthy sleep and occasional stress. Taken every night before bed,
+                                BioLuna helps deliver the deep nightly recharge you need for whole-body health.
+                            </p>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-4">
+                            <img class="img-responsive center-block" style="max-width: 300px; width: 100%;" src={
+                                details.product_img } alt="BioLuna" loading="lazy" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h4>This Is How Great Sleep Happens</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-4 icon">
+                            <img class="img-responsive center-block"
+                                src="https://sun-coast-sciences.imgix.net/rewind.png?fit=max&auto=format&w=28"
+                                width="28" alt="rewind" loading="lazy" />
+                            <p class="text-center"><strong>Calm</strong></p>
+                            <p class="text-center alt">Maintain healthy cortisol levels, even when the stress gets out
+                                of hand.</p>
+                        </div>
+                        <div class="col-xs-6 col-sm-4 icon">
+                            <img class="img-responsive center-block"
+                                src="https://sun-coast-sciences.imgix.net/revive.png?fit=max&auto=format&w=28"
+                                width="28" alt="revive" loading="lazy" />
+                            <p class="text-center"><strong>Control</strong></p>
+                            <p class="text-center alt">Keep glutamate in line, to prevent those racing, out-of-control
+                                thoughts.</p>
+                        </div>
+                        <div class="col-xs-6 col-sm-4">
+                            <img class="img-responsive center-block"
+                                src="https://sun-coast-sciences.imgix.net/renew.png?fit=max&auto=format&w=28" width="28"
+                                alt="renew" loading="lazy" />
+                            <p class="text-center"><strong>Coddle</strong></p>
+                            <p class="text-center alt">Give the brain the soothing agents it needs to stay calm through
+                                the night.</p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h4>“When I’m stressed out and struggling with sleep, BioLuna is where I turn.”</h4>
+                        </div>
+                        <div class="col-xs-12 col-sm-3" style="text-align: center;">
+                            <img style="max-width: 150px; width: 100%;" class="img-responsive center-block img-circle"
+                                src={ details.doctor_img } alt="Dr. Rosenberg" loading="lazy" />
+                        </div>
+                        <div class="col-xs-12 col-sm-9">
+                            <p>
+                                “We live in stressful times, and there’s no shame in struggling to “turn off the brain.”
+                                I deal with it too, and that’s why BioLuna is an indispensable part of my health
+                                toolkit. Sleep is truly the foundation of good health – it’s the nightly recharge that
+                                the body and brain needs to rebuild, and get ready for the next day. That’s what BioLuna
+                                delivers, and that’s why I’m excited to share it with more Americans.
+                            </p>
+                            <p>- Dr. Mark Rosenberg</p>
+                        </div>
+                        <div class="col-xs-12">
+                            <p>Dr. Mark Rosenberg is one of America’s leading research doctors. He earned his Medical
+                                Degree from Georgetown University, and then went on to serve in the U.S. Army. Early in
+                                his career, Dr. Rosenberg worked in emergency medicine, eventually moving on to run the
+                                Emergency Rooms at the Beth Army Medical Center, and the Walter Read Memorial Hospital.
+                                After diagnosing his own mother with Stage-4 lung cancer, he devoted the rest of his
+                                career to immunity research, and has since pioneered a treatment which successfully
+                                brought two Stage-4 patients into complete remission. This treatment is now being
+                                brought into clinical trials with scientists at Harvard University. Dr. Rosenberg
+                                frequently lectures across the country, and serves on the board of the American
+                                Association of Anti-Aging Medicine. He lives in Boca Raton, Florida, with his wife and
+                                two sons.</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="benefits" class="benefits details__content" style="display: none;">
+                    <h2 class="details__content__title">Benefits</h2>
+
+                    <h3>Full-Spectrum Sleep and Stress Support</h3>
+                    <p>BioLuna was designed to support healthy, low levels of cortisol and glutamate, all through the
+                        night. It’s the first and only formula of its kind to offer this comprehensive level of sleep
+                        support.</p>
+
+                    <h3>Improve Energy, Mental Clarity and Mood</h3>
+                    <p>When the brain gets the recharge it needs, it just works better. The result is more energy,
+                        better clarity, and an upbeat mood.</p>
+
+                    <h3>Healthy Weight Loss</h3>
+                    <p>Good sleep is integral to maintaining healthy weight levels. For everything from cellular
+                        wellness, to hormone balance, to craving control - sleep is the “master switch” to healthy
+                        weight loss.</p>
+
+                </div>
+
+
+                <div id="ingredients" class="ingredients details__content" style="display: none;">
+                    <h2 class="details__content__title">Ingredients</h2>
+                    <p>Dr. Rosenberg selected five clinically-tested ingredients for BioLuna. They work together to
+                        support healthy sleep, and relief from occasional stress.</p>
+                    <h3>The Ingredients Include:</h3>
+                    <div class="col-xs-12 col-md-6">
+                        <div class="ingred__list">
+                            <ul>
+                                <li>Sensoril Ashwagada: the patented adaptogen to help control cortisol levels</li>
+                                <li>Melatonin: to coax the body’s biological clock into a predictable rhythm</li>
+                                <li>GABA: to counteract high levels of glutamate, and slow down those out-of-control
+                                    thoughts</li>
+                                <li>Lemon Balm Extract: to extend GABA’s effectiveness for a full night of sleep</li>
+                                <li>L-Theanine: to support healthy levels of serotonin and tryptophan, the “happiness”
+                                    hormones</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                        <picture>
+
+                            <img class="img-responsive center-block" src={ details.supplements_panel_img }
+                                alt="BioLuna">
+                        </picture>
+                    </div>
+                </div>
+
+
+                <div id="guarantee" class="guarantee details__content" style="display: none;">
+                    <h2 class="details__content__title">Our Guarantee</h2>
+
+                    <h3>The Sun Coast Sciences 365-Day Guarantee</h3>
+                    <p>Try BioLuna for a month. Or save by subscribing, or ordering 3-month or 6-month packages. No
+                        matter what you choose, you’re protected by our no-hassle, one-year promise: love how BioLuna
+                        makes you feel, or your money back.</p>
+                </div>
+
+
+                <div id="about" class="about details__content" style="display: none;">
+                    <h2 class="details__content__title">About Sun Coast Sciences</h2>
+                    <p>Dr. Mark Rosenberg is one of America’s leading research physicians, and currently serves on the
+                        board of the American Association of Anti-Aging Medicine.</p>
+                    <p>Dr. Rosenberg’s breakthroughs in immunity and cancer therapy have saved the lives of patients
+                        with stage-4 cancer, and while they are not publicly available, they are currently moving into
+                        clinical trials with scientists at Harvard University.</p>
+                    <p>Now, with Sun Coast Sciences, Dr. Rosenberg is bringing his decades of clinical expertise to the
+                        field of natural health. He has created a collection of formulas and literature that can support
+                        optimal health, longevity, and vitality for those who can’t see him in person.</p>
+                    <p>Sun Coast Sciences is committed to delivering the best products, for the best prices, along with
+                        the best customer service in the natural health industry.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- PRODUCT DETAILS DESKTOP -->
+
+<!-- PRODUCT DETAILS MOBILE -->
+<section class="details visible-xs visible-sm" style="overflow: hidden">
+    <div class="container" id="cta-appear-mob">
+        <div class="row visible-xs">
+            <div class="details__mob">
+                <div class="details__tabs__item--mob details__tabs__item--mob--closed" id="productDetails">Product Details
+                </div>
+                <div class="product-details details__content productDetails">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12">
+                            <h2 class="details__content__title">Product Details</h2>
+                            <p>Our #1 supplement for healthy sleep and occasional stress. Taken every night before bed,
+                                BioLuna helps deliver the deep nightly recharge you need for whole-body health.</p>
+                        </div>
+                        <div class="col-xs-12 col-sm-12">
+                            <img class="img-responsive center-block" style="max-width: 300px; width: 100%;" src={
+                                details.product_img } alt="BioLuna" loading="lazy" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h4>This Is How Great Sleep Happens</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <img class="img-responsive center-block"
+                                src="https://sun-coast-sciences.imgix.net/rewind.png?fit=max&auto=format&w=28"
+                                width="28" alt="rewind" loading="lazy" />
+                            <p class="text-center"><strong>Calm</strong></p>
+                            <p class="text-center alt">Maintain healthy cortisol levels, even when the stress gets out
+                                of hand.</p>
+                        </div>
+                        <div class="col-xs-12">
+                            <img class="img-responsive center-block"
+                                src="https://sun-coast-sciences.imgix.net/revive.png?fit=max&auto=format&w=28"
+                                width="28" alt="revive" loading="lazy" />
+                            <p class="text-center"><strong>Control</strong></p>
+                            <p class="text-center alt">Keep glutamate in line, to prevent those racing, out-of-control
+                                thoughts.</p>
+                        </div>
+                        <div class="col-xs-12">
+                            <img class="img-responsive center-block"
+                                src="https://sun-coast-sciences.imgix.net/renew.png?fit=max&auto=format&w=28" width="28"
+                                alt="renew" loading="lazy" />
+                            <p class="text-center"><strong>Coddle</strong></p>
+                            <p class="text-center alt">Give the brain the soothing agents it needs to stay calm through
+                                the night.</p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h4>“When I’m stressed out and struggling with sleep, BioLuna is where I turn.”</h4>
+                        </div>
+                        <div class="col-xs-12 col-sm-3">
+                            <img style="max-width: 150px; width: 100%;" class="img-responsive center-block img-circle"
+                                src={ details.doctor_img } alt="Dr. Rosenberg" loading="lazy" />
+                        </div>
+                        <div class="col-xs-12 col-sm-9">
+                            <p>“We live in stressful times, and there’s no shame in struggling to “turn off the brain.”
+                                I deal with it too, and that’s why BioLuna is an indispensable part of my health
+                                toolkit. Sleep is truly the foundation of good health – it’s the nightly recharge that
+                                the body and brain needs to rebuild, and get ready for the next day. That’s what BioLuna
+                                delivers, and that’s why I’m excited to share it with more Americans.</p>
+                            <p>- Dr. Mark Rosenberg</p>
+                            <p>Dr. Mark Rosenberg is one of America’s leading research doctors. He earned his Medical
+                                Degree from Georgetown University, and then went on to serve in the U.S. Army. Early in
+                                his career, Dr. Rosenberg worked in emergency medicine, eventually moving on to run the
+                                Emergency Rooms at the Beth Army Medical Center, and the Walter Read Memorial Hospital.
+                                After diagnosing his own mother with Stage-4 lung cancer, he devoted the rest of his
+                                career to immunity research, and has since pioneered a treatment which successfully
+                                brought two Stage-4 patients into complete remission. This treatment is now being
+                                brought into clinical trials with scientists at Harvard University. Dr. Rosenberg
+                                frequently lectures across the country, and serves on the board of the American
+                                Association of Anti-Aging Medicine. He lives in Boca Raton, Florida, with his wife and
+                                two sons.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="details__tabs__item--mob details__tabs__item--mob--closed" id="productBenefits">Benefits
+                </div>
+                <div class="benefits details__content productBenefits">
+                    <h2 class="details__content__title">Benefits</h2>
+
+                    <h3>Full-Spectrum Sleep and Stress Support</h3>
+                    <p>BioLuna was designed to support healthy, low levels of cortisol and glutamate, all through the
+                        night. It’s the first and only formula of its kind to offer this comprehensive level of sleep
+                        support.</p>
+
+                    <h3>Improve Energy, Mental Clarity and Mood</h3>
+                    <p>When the brain gets the recharge it needs, it just works better. The result is more energy,
+                        better clarity, and an upbeat mood.</p>
+
+                    <h3>Healthy Weight Loss</h3>
+                    <p>Good sleep is integral to maintaining healthy weight levels. For everything from cellular
+                        wellness, to hormone balance, to craving control - sleep is the “master switch” to healthy
+                        weight loss.</p>
+                </div>
+                <div class="details__tabs__item--mob details__tabs__item--mob--closed" id="productIngredients">Ingredients
+                </div>
+
+
+                <div class="ingredients details__content productIngredients">
+                    <h2 class="details__content__title">Ingredients</h2>
+                    <p>Dr. Rosenberg selected five clinically-tested ingredients for BioLuna. They work together to
+                        support healthy sleep, and relief from occasional stress.</p>
+                    <h3>The Ingredients Include:</h3>
+                    <div class="ingred__list">
+                        <ul>
+                            <li>Sensoril Ashwagada: the patented adaptogen to help control cortisol levels</li>
+                            <li>Melatonin: to coax the body’s biological clock into a predictable rhythm</li>
+                            <li>GABA: to counteract high levels of glutamate, and slow down those out-of-control
+                                thoughts</li>
+                            <li>Lemon Balm Extract: to extend GABA’s effectiveness for a full night of sleep</li>
+                            <li>L-Theanine: to support healthy levels of serotonin and tryptophan, the “happiness”
+                                hormones</li>
+                        </ul>
+                    </div>
+                    <picture>
+
+                        <img class="img-responsive center-block" src={ details.supplements_panel_img } alt="BioLuna">
+                    </picture>
+                </div>
+
+
+                <div class="details__tabs__item--mob details__tabs__item--mob--closed" id="productGuarantee">Guarantee
+                </div>
+
+
+                <div class="guarantee details__content productGuarantee">
+                    <h2 class="details__content__title">Our Guarantee</h2>
+                    <h3>The Sun Coast Sciences 365-Day Guarantee</h3>
+                    <p>Try BioLuna for a month. Or save by subscribing, or ordering 3-month or 6-month packages. No
+                        matter what you choose, you’re protected by our no-hassle, one-year promise: love how BioLuna
+                        makes you feel, or your money back.</p>
+                </div>
+
+
+                <div class="details__tabs__item--mob details__tabs__item--mob--closed" id="aboutUs">About Sun Coast Sciences
+                </div>
+                <div class="about details__content aboutUs">
+                    <h2 class="details__content__title">About Sun Coast Sciences</h2>
+                    <p>Dr. Mark Rosenberg is one of America’s leading research physicians, and currently serves on the
+                        board of the American Association of Anti-Aging Medicine.</p>
+                    <p>Dr. Rosenberg’s breakthroughs in immunity and cancer therapy have saved the lives of patients
+                        with stage-4 cancer, and while they are not publicly available, they are currently moving into
+                        clinical trials with scientists at Harvard University.</p>
+                    <p>Now, with Sun Coast Sciences, Dr. Rosenberg is bringing his decades of clinical expertise to the
+                        field of natural health. He has created a collection of formulas and literature that can support
+                        optimal health, longevity, and vitality for those who can’t see him in person.</p>
+                    <p>Sun Coast Sciences is committed to delivering the best products, for the best prices, along with
+                        the best customer service in the natural health industry.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END PRODUCT DETAILS MOBILE -->
+
+<script>
+    // DETAILS DESKTOP TABS
+    function openTab(evt, tab) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("details__content");
+
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        tablinks = document.getElementsByClassName("details__tabs__item");
+
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        document.getElementById(tab).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {        
+        var detailTabs = document.querySelectorAll('.details__tabs__item');
+        detailTabs.forEach(function(tab) {
+            tab.addEventListener('click', function() {
+                var selector = this.dataset.selector;
+                openTab(event,selector)
+            });
+        });
+    });
+    // DETAILS DESKTOP TABS
+
+    // DETAILS MOBILE
+    document.addEventListener("DOMContentLoaded", function() {
+    // Select all Detail items
+    var detailItems = document.querySelectorAll('.details__tabs__item--mob');
+
+    /* SLIDE UP */
+    let slideUp = (target, duration=500) => {
+
+        target.style.transitionProperty = 'height, margin, padding';
+        target.style.transitionDuration = duration + 'ms';
+        target.style.boxSizing = 'border-box';
+        target.style.height = target.offsetHeight + 'px';
+        target.offsetHeight;
+        target.style.overflow = 'hidden';
+        target.style.height = 0;
+        target.style.paddingTop = 0;
+        target.style.paddingBottom = 0;
+        target.style.marginTop = 0;
+        target.style.marginBottom = 0;
+        window.setTimeout( () => {
+            target.style.display = 'none';
+            target.style.removeProperty('height');
+            target.style.removeProperty('padding-top');
+            target.style.removeProperty('padding-bottom');
+            target.style.removeProperty('margin-top');
+            target.style.removeProperty('margin-bottom');
+            target.style.removeProperty('overflow');
+            target.style.removeProperty('transition-duration');
+            target.style.removeProperty('transition-property');
+            //alert("!");
+        }, duration);
+    }
+
+        /* SLIDE DOWN */
+    let slideDown = (target, duration=500) => {
+        target.style.removeProperty('display');
+        let display = window.getComputedStyle(target).display;
+        if (display === 'none') display = 'block';
+        target.style.display = display;
+        let height = target.offsetHeight;
+        target.style.overflow = 'hidden';
+        target.style.height = 0;
+        target.style.paddingTop = 0;
+        target.style.paddingBottom = 0;
+        target.style.marginTop = 0;
+        target.style.marginBottom = 0;
+        target.offsetHeight;
+        target.style.boxSizing = 'border-box';
+        target.style.transitionProperty = "height, margin, padding";
+        target.style.transitionDuration = duration + 'ms';
+        target.style.height = height + 'px';
+        target.style.removeProperty('padding-top');
+        target.style.removeProperty('padding-bottom');
+        target.style.removeProperty('margin-top');
+        target.style.removeProperty('margin-bottom');
+        window.setTimeout( () => {
+        target.style.removeProperty('height');
+        target.style.removeProperty('overflow');
+        target.style.removeProperty('transition-duration');
+        target.style.removeProperty('transition-property');
+        }, duration);
+    }
+
+    // Attach click event listeners to Detail items
+    detailItems.forEach(function(item) {
+        item.addEventListener('click', function() {    
+
+            setTimeout(function () {
+                var targetPosition = item.getBoundingClientRect().top + window.scrollY;
+
+                window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+                });
+            }, 900);
+
+            var selector = item.id        
+            
+            // Get all elements with classname which is the same as selector ID
+            var target = document.querySelectorAll("." + selector);
+
+            // If item is closed, open it, and drop down the content
+            if (item.classList.contains("details__tabs__item--mob--closed")) {
+                item.classList.remove('details__tabs__item--mob--closed');
+                item.classList.add('details__tabs__item--mob--open');
+                slideDown(target[0],600);
+            } else {
+                // if its open, clear the selector variable
+                selector = ''
+            }
+
+            // close all content sections that don't have the selector class
+            detailItems.forEach(function(detailsItem) {
+                if (detailsItem.id != selector) {
+                    var close = document.querySelectorAll("." + detailsItem.id);
+                    detailsItem.classList.remove('details__tabs__item--mob--open');
+                    detailsItem.classList.add('details__tabs__item--mob--closed');
+                    slideUp(close[0],600)
+                }
+            });
+        });
+    });
+});
+
+    // DETAILS MOBILE
+</script>

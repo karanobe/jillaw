@@ -1,0 +1,212 @@
+---
+    const { footer, funnel } = Astro.props;
+---
+
+<style>
+    .footer {
+        font-size: 15px;
+        line-height: 1.11
+    }
+
+    @media(min-width:768px) {
+        .footer {
+            font-size: 18px
+        }
+    }
+
+    .footer__top-bar {
+        padding: 21px 0 22px;
+        background-color: #363c3e;
+        font-size: 13px;
+        line-height: 14px
+    }
+
+    @media(min-width:768px) {
+        .footer__top-bar {
+            padding-top: 16px;
+            padding-bottom: 12px;
+            font-size: inherit;
+            line-height: inherit
+        }
+    }
+
+    .footer__top-bar:last-child {
+        margin-bottom: 0
+    }
+
+    .footer__top-bar_container {
+        margin-right: auto;
+        margin-bottom: 0;
+        font-size: 13px;
+        margin-left: auto;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        line-height: 18px;
+        color: #b8b8b8;
+        font-weight: 400;
+        text-align: center
+    }
+
+    .footer__bottom-bar {
+        padding: 20px 0 5px;
+        background-color: #1d242b;
+        font-size: 14px;
+    }
+
+    @media(min-width:768px) {
+        .footer__bottom-bar {
+            padding: 14px 0
+        }
+    }
+
+    .footer__bottom-bar_content {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -webkit-box-pack: justify;
+        -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center
+    }
+
+    .footer__logo {
+        margin: 0 auto 20px;
+        max-width: 90px;
+    }
+
+    @media(min-width:768px) {
+        .footer__logo {
+            width: 100%;
+            max-width: 90px;
+            margin: 0 auto 10px;
+        }
+    }
+
+    .footer__logo img {
+        width: 100%;
+        max-width: 90px;
+    }
+
+    .footer__logo a {
+        display: block
+    }
+
+    .footer-list {
+        margin: 0 -7px;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        color: #b6b6b6;
+    }
+
+    @media(min-width:768px) {
+        .footer-list {
+            -webkit-box-pack: start;
+            -webkit-justify-content: flex-start;
+            -ms-flex-pack: start;
+            justify-content: flex-start;
+            margin: auto;
+        }
+    }
+
+    .footer-list li {
+        padding: 0 7px;
+        margin-bottom: 10px;
+        position: relative
+    }
+
+    @media(min-width:1024px) {
+        .footer-list li {
+            width: auto
+        }
+    }
+
+    .footer-list li:not(:last-child):after {
+        content: '';
+        width: 1px;
+        height: 17px;
+        background-color: currentColor;
+        position: absolute;
+        top: 50%;
+        right: 0;
+        margin-top: -7px
+    }
+
+    @media(max-width:767px) {
+        .footer-list {
+            margin: 0 auto;
+            display: block !important;
+        }
+
+        .footer-list li:not(:last-child):after {
+            display: none;
+        }
+
+        .footer-list li {
+            text-align: center;
+        }
+    }
+
+    .footer-list li a {
+        color: inherit;
+        text-decoration: none
+    }
+
+    .footer-list li a:hover {
+        text-decoration: underline
+    }
+</style>
+
+<footer class="footer">
+    <div class="footer__top-bar text-white text-center">
+        <div class="container footer__top-bar_container">
+            <p>The views and opinions of Dr. Rosenberg do not necessarily represent those of the organizations with
+                which he is currently, or formerly, associated. </p>
+            <p>These statements have not been evaluated by the Food and Drug Administration. This product is not
+                intended to diagnose, treat, cure or prevent any disease. Use only as directed. Consult your healthcare
+                provider before using supplements or providing supplements to children under the age of 18. </p>
+            <p>The information provided herein is intended for your general knowledge only and is not intended to be,
+                nor is it, medical advice or a substitute for medical advice. If you have or suspect you have, a
+                specific medical condition or disease, please consult your healthcare provider.</p>
+        </div>
+    </div>
+    <div class="footer__bottom-bar">
+        <div class="container" style="max-width:980px;">
+            <div class="footer__bottom-bar_content text-white">
+                <div class="footer__logo">
+                    <a href="#">
+                        <img src={funnel.company.logo_alt + "?w=180" } alt={funnel.company.name}>
+                    </a>
+                </div>
+                <ul class="footer-list list-inline">
+                    <li>
+                        <a href="#">&copy; {funnel.company.name}, LLC
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#terms-conditions" data-toggle="modal" data-target="#terms-conditions">Terms &amp;
+                            Conditions
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#privacy-policy" data-toggle="modal" data-target="#privacy-policy">Privacy Policy
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#contact-us" data-toggle="modal" data-target="#contact-us">Contact Us
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>

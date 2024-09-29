@@ -1,0 +1,116 @@
+---
+const {header , funnel}  = Astro.props;
+---
+{ (header.enabled == true) &&
+<style>
+.header {
+    background: #fff;
+    height: 110px;
+}
+
+.header .container {
+    height: 100%;
+    padding: 0;
+}
+
+.header .row {
+    margin: 0;
+}
+
+.flex-row__header {
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.flex-row__header .col-xs-12, .flex-row__header .col-sm-6, .flex-row__header .col-md-6 {
+    padding: 0;
+}
+
+.header__logo {
+    width: 100px;
+    margin: auto;
+}
+
+@media (min-width: 768px) {
+    .header {
+        height: 101px;
+    }
+
+    .header {
+        /*transform: scale(0.5);*/
+    }
+
+    .header__logo {
+        width: 100px;
+        margin: unset;
+    }
+}
+
+
+@media (min-width:1920px){
+    .header .container{
+        width:1200px;
+    }
+}
+
+.header__links {
+    text-align: right;
+}
+
+.header__p {
+    color: rgb(51, 51, 51);
+    text-align: right;
+    display: inline-block;
+    font-family: 'Lato', sans-serif;
+}
+
+.header__p a {
+    color: rgb(51, 51, 51);
+    font-size: 18px;
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+.header__p a img {
+    text-decoration: none;
+}
+
+.header__p a:hover, .header__p a:focus {
+    color: #333;
+    text-decoration: none;
+}
+
+.header__p a:visited, .header__p a:active {
+    color: #333;
+    text-decoration: none;
+}
+
+/*END HEADER*/    
+</style>
+
+<section class="header">
+    <div class="container">
+        <div class="row flex-row__header">
+            <div class="col-xs-12 col-sm-6">
+                <img class="img-responsive header__logo"
+                src={funnel.company.logo + '&w=100&h=62'}
+                alt={funnel.company.name}>
+            </div>
+            <div class="hidden-xs col-sm-6 header__links">
+                <p class="header__p">
+                    <a href={'tel:' + funnel.company.phone}>
+                        <img src="https://sun-coast-sciences.imgix.net/phone-icon.png?fit=max&auto=format&w=13"
+                        alt="Call Us" loading="lazy">
+                        {funnel.company.phone}
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+}

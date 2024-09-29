@@ -1,0 +1,826 @@
+---
+
+---
+
+<style>
+    /* SHIPPING PAGE CSS */
+    .checkout-box {
+        float: left;
+        width: 100%;
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+        margin: 40px 0;
+        border-radius: 5px;
+        padding: 15px 20px;
+    }
+
+    .checkout-box__left {
+        float: left;
+        width: 58%;
+        position: relative;
+    }
+
+    .checkout-box__heading {
+        text-align: left;
+        padding: 0 50px 0 0;
+        position: relative;
+    }
+
+    .checkout-box__heading--step2 {
+        margin-top: 30px;
+    }
+
+    .checkout-box__heading p {
+        font-size: 20px;
+        line-height: 26px;
+        color: #202020;
+    }
+
+    .checkout-box__heading h3 {
+        font-size: 30px;
+        line-height: 36px;
+        color: #5893ae;
+        font-weight: 700;
+        position: relative;
+    }
+
+    .checkout-box__heading h3:after {
+        content: "";
+        position: absolute;
+        right: 0;
+        top: 15px;
+        width: 150px;
+        height: 12px;
+        background: url(https://del-mar-laboratories.imgix.net/checkout/images/line-icon.png?fit=max&amp;auto=format&amp;w=240&amp;h=30) no-repeat left center;
+    }
+
+    .checkout-box__heading h4 {
+        font-size: 18px;
+        line-height: 24px;
+        color: #202020;
+        margin-top: 2px;
+        font-weight: normal;
+    }
+
+    .cvv-img {
+        position: absolute;
+        bottom: 14px;
+        right: 14px;
+        width: 22px;
+    }
+
+    .shipping-icon {
+        position: absolute;
+        right: 0;
+        top: 5px;
+    }
+
+    .view-box {
+        width: 100%;
+        border: 2px solid #5893ae;
+        padding: 10px 10px 12px;
+        font-size: 19px;
+        line-height: 24px;
+        font-weight: 500;
+        color: #000;
+        border-radius: 4px;
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .view-box span {
+        color: #ff0000;
+        width: 56px;
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    .view-box img {
+        display: inline-block;
+        vertical-align: top;
+        margin: 6px 5px 0 0;
+        width: 25px;
+    }
+
+    .checkout-box__fields {
+        width: 100%;
+        margin: 15px 0 0;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .fields__elements {
+        margin: 6px 0;
+        width: 100%;
+    }
+
+    .fields__elements--half {
+        width: 48%;
+    }
+
+    .fields__elements--col-6 {
+        width: 58%;
+    }
+
+    .fields__elements--col-4 {
+        width: 40%;
+    }
+
+    .fields__elements--col-2 {
+        width: 28%;
+    }
+
+    .fields__elements--col-8 {
+        width: 38%;
+        position: relative;
+    }
+
+    .fields__elements label {
+        width: 100%;
+        font-size: 18px;
+        line-height: 24px;
+        color: #1c1c1c;
+        margin-bottom: 5px;
+        text-align: left;
+        font-weight: normal;
+        letter-spacing: 0.3px;
+    }
+
+    .fields__elements input[type="text"],
+    .fields__elements select,
+    .fields__elements input[type="tel"],
+    .fields__elements input[type="email"] {
+        width: 100%;
+        border: 1px solid #cecccc;
+        padding: 12px 15px;
+        -webkit-appearance: none;
+        font-size: 17px;
+        font-family: "Circular Std";
+        border-radius: 3px;
+        font-weight: normal;
+        color: #000;
+        outline: none;
+    }
+
+    .fields__elements select {
+        background: url(https://del-mar-laboratories.imgix.net/checkout/images/sel-img.png?fit=max&amp;auto=format) center right 15px no-repeat #fff;
+    }
+
+    .cc-icon {
+        margin-top: 36px;
+        max-width: 100%;
+    }
+
+    .checkout-button {
+        width: 100%;
+        margin-top: 20px;
+        background: #56a6cc;
+        border: none;
+        outline: none;
+        border-radius: 10px;
+        font-family: "Circular Std";
+        color: #fff;
+        font-weight: bold;
+        font-size: 32px;
+        height: 80px;
+        line-height: 76px;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+        border-bottom: 4px solid #3382a8;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .checkout-button:hover {
+        background-color: #47809b;
+    }
+
+    .checkout-button img {
+        display: inline-block;
+        vertical-align: middle;
+        width: 46px;
+        margin: -10px 0 0 4px;
+    }
+
+    .secure-logos {
+        display: block;
+        margin: 0 auto;
+        margin-top: 15px;
+        max-width: 100%;
+    }
+
+    .terms-text {
+        color: #53565d;
+        font-size: 14px;
+        line-height: 20px;
+        margin-top: 20px;
+    }
+
+    /* Express Checkout*/
+    .express-checkout {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin: 10px 0 10px 0;
+    }
+
+    .express-checkout__line {
+        flex-grow: 1;
+        margin: 0;
+    }
+
+    .express-checkout__text {
+        margin: 0 10px;
+        white-space: nowrap;
+        font-size: 22px;
+        font-weight: 500;
+    }
+
+    /*CSS RIGHT SIDE*/
+    .checkout-box__right {
+        float: right;
+        width: 39%;
+    }
+
+    .summary-box__heading {
+        font-size: 26px;
+        line-height: 30px;
+        color: #000;
+        font-weight: 600;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 8px;
+        margin: 5px 0 20px;
+    }
+
+    .summary-box__heading-price {
+        float: right;
+        padding-right: 20px;
+        color: #5893ae;
+        font-size: 18px;
+    }
+
+    .summary-box__product {
+        float: left;
+        max-width: 199px;
+        width: 100%;
+    }
+
+    .summary-box__product img {
+        max-width: 100%;
+    }
+
+    .summary-box__product-info {
+        width: calc(100% - 215px);
+        float: left;
+        position: relative;
+        font-size: 19px;
+        line-height: 22px;
+        font-weight: 600;
+        text-align: left;
+        padding-top: 12px;
+        padding-left: 15px;
+    }
+
+    .summary-box__product-info span {
+        font-size: 24px;
+        line-height: 34px;
+        font-weight: bold;
+        color: #5893ae;
+        display: block;
+        padding-bottom: 3px;
+    }
+
+    .summary-box__term {
+        text-align: center;
+        color: #5893ae;
+    }
+
+    .summary-box__price__info {
+        border: 2px solid #5893ae;
+        border-radius: 10px;
+        background: #dcf2fc;
+        color: #2e2e2e;
+        margin-top: 20px;
+    }
+
+    .checkout__product-slogan {
+        color: #000000 !important;
+        font-size: 19px !important;
+        line-height: 21px !important;
+    }
+
+    .price__info__inner {
+        width: 46%;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .price__info__inner p {
+        font-size: 20px;
+        line-height: 26px;
+    }
+
+    .price__info__inner h3 {
+        font-size: 38px;
+        line-height: 42px;
+        font-weight: 500;
+    }
+
+    .price__info__inner--left {
+        float: left;
+    }
+
+    .price__info__inner--left h3 {
+        position: relative;
+        display: inline-block;
+    }
+
+    .price__info__inner--left h3:after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 22px;
+        border: 1px solid #ff0000;
+        width: calc(100% + 20px);
+        margin-left: -10px;
+        transform: rotate(-10deg);
+    }
+
+    .price__info__inner--right {
+        float: right;
+    }
+
+    .summary-box__price-details {
+        float: left;
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .summary-box__price-details tr td {
+        width: 50%;
+        text-align: left;
+        font-size: 18px;
+        line-height: 22px;
+        padding: 10px;
+        border-bottom: 1px solid #818181;
+    }
+
+    .summary-box__price-details tr td:last-child {
+        width: 30%;
+        text-align: right;
+    }
+
+    .summary-box__price-details tr:nth-child(3) td {
+        background: #fff6bc;
+    }
+
+    .summary-box__price-details tr:last-child td {
+        border-bottom: none;
+    }
+
+    .money-back {
+        border: 1px solid #d7d7d7;
+        padding: 15px 30px 25px;
+        margin-top: 75px;
+        text-align: center;
+        border-radius: 10px;
+        color: #141011;
+    }
+
+    .money-back img {
+        margin-top: -80px;
+    }
+
+    .money-back h3 {
+        font-size: 25px;
+        line-height: 30px;
+        font-weight: bold;
+        margin-top: 20px;
+    }
+
+    .money-back p {
+        font-size: 18px;
+        line-height: 24px;
+        margin-top: 15px;
+    }
+</style>
+
+<div class="container">
+    <div class="checkout-box">
+        <div class="checkout-box__left">
+            <!-- Mobile Summary -->
+            <div class="summary-box visible-xs">
+                <p class="summary-box__heading summary-box__heading--mobile">Order Summary <span
+                        class="checkout__product-offer-price summary-box__heading-price">-</span></p>
+
+                <div style="display:none;" id="order-summary-toggle">
+                    <div class="summary-box__product">
+                        <img loading="lazy"
+                            src="https://sun-coast-sciences.imgix.net/checkout/images/1x1.png?fit=max&auto=format"
+                            alt="ReActivate" class="checkout__product-image">
+                    </div>
+                    <h3 class="summary-box__product-info"><span class="checkout__product-name">-<sup></sup></span> <span
+                            class="checkout__product-slogan">-</span></h3>
+
+                    <div class="clearall"></div>
+                    <p class="summary-box__term">(<span class="checkout__term-text">--</span>)</p>
+                    <div class="summary-box__price__info">
+                        <div class="price__info__inner price__info__inner--left">
+                            <p>Retail Price</p>
+                            <h3 class="checkout__product-retail-price">-</h3>
+                        </div>
+                        <img loading="lazy"
+                            src="https://sun-coast-sciences.imgix.net/checkout/images/price-separator.png?fit=max&auto=format&w=24&h=87"
+                            alt="price separator" class="price-separator">
+                        <div class="price__info__inner price__info__inner--right">
+                            <p>Offer Price</p>
+                            <h3 class="checkout__product-offer-price">-</h3>
+                        </div>
+                    </div>
+
+                    <table class="summary-box__price-details" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td>Quantity:</td>
+                            <td class="checkout__product-quantity">-</td>
+                        </tr>
+                        <tr>
+                            <td>Price:</td>
+                            <td class="checkout__product-offer-price">-</td>
+                        </tr>
+                        <tr>
+                            <td>You Saved:</td>
+                            <td class="checkout__product-saved-price">-</td>
+                        </tr>
+                        <tr>
+                            <td>Shipping:</td>
+                            <td>
+                                <span class="original_shipping_price"><span
+                                        class="checkout__product-original-shipping-price strike">-</span></span>
+                                <span class="checkout__product-shipping-price">-</span>
+                            </td>
+                        </tr>
+                        <tr class="duty-fee-table-row">
+                            <td>Duty Fee:</td>
+                            <td class="checkout__product-duty-fee">-</td>
+                        </tr>
+                        <tr>
+                            <td>Total</td>
+                            <td class="checkout__product-total-price">-</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="clearall visible-xs"></div>
+
+            <!-- ViewBox -->
+            <div class="view-box">
+                <img loading="lazy"
+                    src="https://sun-coast-sciences.imgix.net/checkout/images/eye.png?fit=max&auto=format&w=40&h=24"
+                    alt="eye">
+                13 others are viewing this offer right now - <span class="countdown"
+                    id="view-box__stopwatch">10:00</span>
+
+            </div>
+
+            <!--<div class="fields__elements" style="text-align:center;">
+                    <span class="estimated-arrival__text">
+                        Estimated Delivery: <span class="estimated-arrival__date">-</span>
+					</span>
+				</div>-->
+            <!-- END ViewBox -->
+
+            <!-- SUBSCRIBE & SAVE Start -->
+            <div class="subscribe">
+                <h2 class="subscribe__header">Dr. Rosenberg Recommends:<br> <b>Subscribe & Save 10%</b></h2>
+                <ul class="order-list order-list--alt">
+                    <p>Before you place your order, remember: there is no risk to subscribe, and you will
+                        immediately save an additional <span class="checkout__product-vip-savings"></span> right
+                        now, <span class="original_shipping_price">plus <span
+                                class="checkout__product-original-shipping-price"></span> in free monthly
+                            shipping, </span>and you'll get a 20%-off coupon for our entire store. Subscriptions
+                        are also protected from sell-outs and price increases, so if you love it, you'll never
+                        run out, and you'll never pay more.</p>
+                    <p>And if you decide it's not for you? It's easy to cancel any time you want, by phone,
+                        email, or an easy, self-service link in your email receipt. If that all sounds good,
+                        then click the box below to get started now.</p>
+                </ul>
+                <div class="subscribe__check">
+                    <div class="checkbox-group">
+                        <label class="checkbox green-checkbox"><b>YES!</b> I'd like to <b>save <span
+                                    class="checkout__product-total_savings"></span> right now</b>, and try
+                            Subscribe & Save, risk-free!</b>
+                            <input type="checkbox" name="subscription" data-product-id="714" data-campaign-id='511'
+                                value="subscription">
+                            <div class="checkbox_indicator"></div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUBSCRIBE & SAVE End -->
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="scroll"></div>
+                    <div class="subscribe__disclaimer">
+                        <p class="subscribe__disclaimer__copy">
+                            By clicking "Place My Encrypted Order Now" I will be enrolled in AutoRefill and
+                            receive a new supply every 28 days (at the price above).
+                            I am under no obligation or contract, and I can cancel any time by calling&nbsp;<a
+                                href="tel:1-888-281-6816" target="_blank"
+                                rel="noopener noreferrer">1-888-281-6816</a>&nbsp;or emailing&nbsp;
+                            <a href="mailto:mail@suncoastsciences.com" target="_blank"
+                                rel="noopener noreferrer">mail@suncoastsciences.com</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PayPal -->
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="express-checkout">
+                        <hr class="express-checkout__line">
+                        <span class="express-checkout__text">Express Checkout</span>
+                        <hr class="express-checkout__line">
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div id="paypal-button-container"></div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div
+                        style="display: flex; align-items: center; justify-content: center; width: 100%;margin:10px 0 10px 0">
+                        <hr style="flex-grow: 1; margin: 0;">
+                        <span
+                            style="margin: 0 10px; white-space: nowrap;font-size: 22px;font-weight:500;color:#5794ae;">OR</span>
+                        <hr style="flex-grow: 1; margin: 0;">
+                    </div>
+
+                </div>
+            </div>
+            <!-- END PayPal -->
+
+            <!-- Checkout Form -->
+            <div class="checkout-box__step-1">
+
+                <div class="checkout-box__heading">
+                    <p>Step 1 Of 2</p>
+                    <h3>Enter Shipping Information</h3>
+                    <h4>Tell us where to send your <span class="checkout__product-name">-</span><sup
+                            class="checkout__product-rights-symbol"></sup></h4>
+                    <img loading="lazy"
+                        src="https://sun-coast-sciences.imgix.net/checkout/images/ship-icon.png?fit=max&auto=format&w=90&h=90"
+                        alt="shipping" class="shipping-icon">
+                </div>
+
+
+                <div class="alert alert-danger error-message" style="display: none; text-align: left;margin-top:20px;">
+                    Field
+                    Required</div>
+
+                <div class="checkout-box__fields">
+                    <div class="fields__elements fields__elements--half">
+                        <label for="first-name">First Name *</label>
+                        <input type="text" name="firstName" id="first-name" placeholder="" tabindex="1"
+                            autocorrect="off" autocapitalize="off" spellcheck="false">
+                    </div>
+                    <div class="fields__elements fields__elements--half">
+                        <label for="last-name">Last Name *</label>
+                        <input type="text" name="lastName" id="last-name" placeholder="" tabindex="2" autocorrect="off"
+                            autocapitalize="off" spellcheck="false">
+                    </div>
+                    <div class="fields__elements fields__elements--half">
+                        <label for="email">Email *</label>
+                        <input type="text" name="emailAddress" id="email" placeholder="" tabindex="3" autocorrect="off"
+                            autocapitalize="off" spellcheck="false" autocomplete="email">
+                    </div>
+                    <div class="fields__elements fields__elements--half">
+                        <label for="phone-number">Phone Number *</label>
+                        <input type="tel" name="phoneNumber" id="phone-number" placeholder="" tabindex="4"
+                            autocorrect="off" autocapitalize="off" spellcheck="false" autocomplete="tel">
+                    </div>
+
+
+                    <div class="fields__elements">
+                        <label for="shipping-address">Shipping Address *</label>
+                        <input type="text" name="shippingAddress1" id="shipping-address" placeholder="" tabindex="5"
+                            autocorrect="off" autocomplete="shipping address-line1">
+                    </div>
+                    <div class="fields__elements">
+                        <label for="unit">Apt. / Unit #</label>
+                        <input type="text" name="shippingAddress2" id="unit" placeholder="" tabindex="6"
+                            autocorrect="off" autocomplete="shipping address-line2">
+                    </div>
+                    <div class="fields__elements fields__elements">
+                        <label for="country">Country *</label>
+                        <select name="shippingCountry" id="country" tabindex="9" autocorrect="off" autocapitalize="off"
+                            spellcheck="false" autocomplete="shipping address-level1">
+                            <option value="" disabled selected>Country*</option>
+                            <option value="US">United States</option>
+                            <option value="AU">Australia</option>
+                            <option value="CA">Canada</option>
+                            <option value="DE">Germany</option>
+                            <option value="FR">France</option>
+                            <option value="IE">Ireland</option>
+                            <option value="MX">Mexico</option>
+                            <option value="NO">Norway</option>
+                            <option value="NZ">New Zealand</option>
+                            <option value="PH">Philippines</option>
+                            <option value="SE">Sweden</option>
+                            <option value="GB">United Kingdom</option>
+                            <option value="ZA">South Africa</option>
+                        </select>
+                    </div>
+                    <div class="fields__elements fields__elements--half">
+                        <label for="city">City *</label>
+                        <input type="text" name="shippingCity" id="city" placeholder="" tabindex="7"
+                            autocomplete="shipping address-level2">
+                    </div>
+
+                    <div class="fields__elements fields__elements--half">
+                        <label for="state">State *</label>
+                        <select name="shippingState" id="state" tabindex="9" autocorrect="off" autocapitalize="off"
+                            spellcheck="false" autocomplete="shipping address-level1">
+                        </select>
+                    </div>
+
+                    <div class="fields__elements fields__elements--half">
+                        <label for="zip">Zip Code *</label>
+                        <input type="text" name="shippingZip" id="zip" placeholder="" tabindex="8"
+                            autocomplete="shipping postal-code" autocorrect="off">
+                    </div>
+
+                    <div class="fields__elements fields__elements--half"
+                        style="background-color: #fffbe3;padding: 11px 5px 5px 5px;text-align: center;border-radius: 8px;1px solid #fff5ac;">
+                        <span class="estimated-arrival__text">
+                            Estimated Delivery:<br> <span class="estimated-arrival__date">-</span>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="checkout-box__heading checkout-box__heading--step2">
+                    <p>Step 2 Of 2</p>
+                    <h3>Enter Payment Information</h3>
+                    <h4>Final step to complete your purchase</h4>
+                    <img loading="lazy"
+                        src="https://sun-coast-sciences.imgix.net/checkout/images/payments-icon.png?fit=max&auto=format&w=60&h=60"
+                        alt="shipping" class="shipping-icon">
+                </div>
+
+                <div class="checkout-box__fields payment-form">
+                    <div class="fields__elements fields__elements--col-6">
+                        <label for="card-number">Card Number *</label>
+                        <img loading="lazy"
+                            src="https://sun-coast-sciences.imgix.net/checkout/images/cc-cards.png?fit=max&auto=format&w=243&h=36"
+                            alt="card" class="cc-icon visible-xs">
+                        <div style="position: relative;">
+                            <div class="payment-form__field--credit-card-icon payment-form__field--unknown-credit-card"
+                                style="position:absolute;height:33px;top: 15px;right: 1px;"></div>
+                            <input class="form-group__input" id="card-number" type="text" name="creditCardNumber"
+                                placeholder="" maxlength="23" tabindex="10" autocorrect="off" autocapitalize="off"
+                                spellcheck="false" autocomplete="cc-number">
+                            <input type="hidden" name="creditCardType" id="credit-card-type" value="unknown">
+                        </div>
+                    </div>
+                    <div class="fields__elements fields__elements--col-4 hidden-xs">
+                        <img loading="lazy"
+                            src="https://sun-coast-sciences.imgix.net/checkout/images/cc-cards.png?fit=max&auto=format&w=243&h=36"
+                            alt="card" class="cc-icon">
+                    </div>
+                    <div class="fields__elements fields__elements--col-2">
+                        <label for="exp-month">Expire Date*</label>
+                        <select name="expirationMonth" id="exp-month" tabindex="11" autocorrect="off"
+                            autocapitalize="off" spellcheck="false" autocomplete="cc-expiration">
+                            <option value="">Month</option>
+                            <option value="01">01</option>
+                            <option value="02">02</option>
+                            <option value="03">03</option>
+                            <option value="04">04</option>
+                            <option value="05">05</option>
+                            <option value="06">06</option>
+                            <option value="07">07</option>
+                            <option value="08">08</option>
+                            <option value="09">09</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                        </select>
+                    </div>
+                    <div class="fields__elements fields__elements--col-2">
+                        <label for="exp-year">&nbsp;</label>
+                        <select name="expirationYear" id="exp-year" tabindex="12" autocorrect="off" autocapitalize="off"
+                            spellcheck="false">
+                            <option value="">Year</option>
+                            <option value="23">2023</option>
+                            <option value="24">2024</option>
+                            <option value="25">2025</option>
+                            <option value="26">2026</option>
+                            <option value="27">2027</option>
+                            <option value="28">2028</option>
+                            <option value="29">2029</option>
+                            <option value="30">2030</option>
+                            <option value="31">2031</option>
+                        </select>
+                    </div>
+                    <div class="fields__elements fields__elements--col-8">
+                        <label for="cvv">CVV *</label>
+                        <input type="text" name="cvv" id="cvv" placeholder="" tabindex="13" maxlength="4"
+                            autocorrect="off" autocapitalize="off" spellcheck="false" autocomplete="cc-csc">
+                    </div>
+                    <button class="payment-form__next-button checkout-button" tabindex="14">Place My Encrypted
+                        Order Now <img
+                            src="https://sun-coast-sciences.imgix.net/checkout/images/hand-icon.png?fit=max&auto=format&w=99&h=65"
+                            class="hidden-xs" loading="lazy"></button>
+                    <img loading="lazy" src="https://sun-coast-sciences.imgix.net/checkout/images/secure-icons.jpeg"
+                        width="377" height="47" alt="secure logos" class="secure-logos">
+                    <!--                            <p class="terms-text">By clicking "Place My Encrypted Order Now" I will be enrolled in-->
+                    <!--                                AutoRefill and receive a new supply every month (at the price above). I am under no-->
+                    <!--                                obligation or contract, and I can cancel any time by calling <a href="tel:888-281-6816">888-281-6816</a> or-->
+                    <!--                                emailing <a href="mailto:mail@suncoastsciences.com">mail@suncoastsciences.com</a>.</p>-->
+                </div>
+            </div>
+        </div>
+
+        <div class="checkout-box__right">
+            <div class="summary-box hidden-xs">
+                <p class="summary-box__heading">Order Summary</p>
+                <div class="summary-box__product">
+                    <img loading="lazy"
+                        src="https://sun-coast-sciences.imgix.net/checkout/images/1x1.png?fit=max&auto=format"
+                        alt="ReActivate" class="checkout__product-image">
+                </div>
+                <h3 class="summary-box__product-info"><span class="checkout__product-name">-<sup
+                            class="checkout__product-rights-symbol"></sup></span> <span
+                        class="checkout__product-slogan">-</span></h3>
+
+                <div class="clearall"></div>
+                <p class="summary-box__term">(<span class="checkout__term-text">--</span>)</p>
+                <div class="summary-box__price__info">
+                    <div class="price__info__inner price__info__inner--left">
+                        <p>Retail Price</p>
+                        <h3 class="checkout__product-retail-price">-</h3>
+                    </div>
+                    <img loading="lazy"
+                        src="https://sun-coast-sciences.imgix.net/checkout/images/price-separator.png?fit=max&auto=format&w=24&h=87"
+                        alt="price separator" class="price-separator">
+                    <div class="price__info__inner price__info__inner--right">
+                        <p>Offer Price</p>
+                        <h3 class="checkout__product-offer-price">-</h3>
+                    </div>
+                </div>
+
+                <table class="summary-box__price-details" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td>Quantity:</td>
+                        <td class="checkout__product-quantity">-</td>
+                    </tr>
+                    <tr>
+                        <td>Price:</td>
+                        <td class="checkout__product-offer-price">-</td>
+                    </tr>
+                    <tr>
+                        <td>You Saved:</td>
+                        <td class="checkout__product-saved-price">-</td>
+                    </tr>
+                    <tr>
+                        <td>Shipping:</td>
+                        <td>
+                            <span class="checkout__product-shipping-price">-</span>
+                        </td>
+                    </tr>
+                    <tr class="duty-fee-table-row">
+                        <td>Duty Fee:</td>
+                        <td class="checkout__product-duty-fee">-</td>
+                    </tr>
+                    <tr>
+                        <td>Total</td>
+                        <td class="checkout__product-total-price">-</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="clearall"></div>
+            <div class="money-back">
+                <img loading="lazy"
+                    src="https://sun-coast-sciences.imgix.net/checkout/images/money-back-seal.png?fit=max&auto=format&w=168&h=140"
+                    alt="money back seal" width="135px" height="113">
+                <h3>You’re Protected With Our “You Have A Year To Decide” Guarantee</h3>
+                <p>The investment that you’re about to make in your health is protected by our 365-day
+                    money-back guarantee. That means you have a full year to decide if this special formula
+                    is right for you. If at any point you decide that you’d like a refund, all you have to
+                    do is send us an email, at <a href="mailto:mail@suncoastsciences.com">mail@suncoastsciences.com</a>,
+                    or
+                    call us at <a href="tel:888-281-6816">888-281-6816</a>. You
+                    risk nothing when you get started today!</p>
+            </div>
+        </div>
+    </div>
+</div>

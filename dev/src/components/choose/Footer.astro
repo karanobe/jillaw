@@ -1,0 +1,257 @@
+---
+const { footer , funnel } = Astro.props
+---
+
+<style is:global>
+.flex-row {
+    display: block;
+}
+
+@media (min-width: 768px) {
+    .flex-row {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+}    
+.cta-banner {
+    bottom: 0;
+    width: 100%;
+    padding: 23px 0;
+    background-color: rgb(88, 147, 174);
+}
+
+.cta-banner .container {
+    width: 1200px !important;
+}
+
+@media (max-width: 1200px) {
+    .cta-banner .container {
+        width: 970px !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .cta-banner .container {
+        margin-right: auto;
+        margin-left: auto;
+        padding-left: 15px;
+        padding-right: 15px;
+        width: 100% !important;
+    }    
+}
+
+.cta-banner h1 {
+    color: #fff;
+    text-align: center;
+}
+
+.cta-banner .button {
+    font-family: 'Lato', sans-serif;
+    padding: 10.25px 16.25px;
+    background-color: rgb(1, 43, 63);
+    color: rgb(255, 255, 255);
+    text-align: center;
+    white-space: nowrap;
+    text-transform: uppercase;
+    line-height: 40px;
+    font-size: 33px;
+    font-weight: 400;
+}
+
+.cta-banner .button:hover {
+    text-decoration: none;
+}
+
+.float {
+    display: none;
+    position: fixed;
+}
+
+@media (min-width: 768px) {
+    .cta-banner h1 {
+        font-size: 28px;
+        font-weight: 700;
+        line-height: 34px;
+    }
+
+    .cta-banner .button {
+        font-size: 22px;
+        line-height: 26px;
+        font-weight: 400;
+        padding: 9.5px 19px;
+    }
+}    
+</style>
+
+<style>
+/* FOOTER */
+
+.footer {
+    line-height: 1.11;
+    padding-top: 0;
+    padding: 30px 0;
+}
+
+.footer__img {
+    margin: 20px auto 20px auto;
+    max-width: 300px;
+    width: 100%;
+}
+
+.footer__p {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 28px;
+    color: #333;
+    text-align: center;
+    display: block;
+    margin: 0;
+}
+
+.footer__p a {
+    color: #333;
+    display: block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.footer__p a:hover {
+    text-decoration: none;
+}
+
+.footer__p a:last-child {
+    border: none;
+}
+
+.footer__p .link {
+    padding-right: 10px;
+    margin-right: 10px;
+}
+
+.footer__p .link img {
+    padding-right: 5px;
+}
+
+.footer__p__disclaimer {
+    font-family: 'Lato', sans-serif;
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 23px;
+    color: rgb(51, 51, 51);
+    text-align: center;
+    border: 1px solid rgb(225, 225, 225);
+    background-color: rgb(251, 251, 251);
+    width: 374px;
+    margin: 20px auto;
+    padding: 10px;
+}
+
+@media (min-width: 768px) {
+    .footer__img {
+        max-width: 200px;
+        width: 100%;
+    }
+
+    .footer__p {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 23px;
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
+
+    .footer__p a {
+        display: inline;
+        border-right: 2px solid rgb(204, 204, 204);
+        padding: 0 15px;
+    }
+
+    .footer__p .link {
+        border: none;
+        border: none;
+        padding: 0 15px;
+    }
+
+    .footer__p__disclaimer {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 19px;
+        width: 714px;
+        margin: 20px auto;
+        padding: 10px;
+    }
+}
+
+/* END FOOTER  */    
+</style>
+
+<!-- FOOTER -->
+                
+                <div class="btmfix">
+                    <div class="cta-banner no-float">
+                        <div class="container">
+                            <div class="row flex-row" id="call-btn">
+                                <div class="hidden-xs col-sm-7">
+                                    <h1>Hurry! Order Now &amp; Save Up To 53% Off</h1>
+                                </div>
+                                <div class="hidden-xs col-sm-5 text-center">
+                                    <p><a class="anchor button" href="#picker">ORDER NOW &gt;</a></p>
+                                </div>
+                                <div class="col-xs-12 hidden-sm hidden-md hidden-lg text-center">
+                                    <p><a class="anchor button" href="#picker-mob">ORDER NOW &gt;</a></p>
+                                </div>   
+                            </div>
+                            </div>
+                    </div>
+                    <footer class="footer">
+                        <div class="container">
+                            <p class="footer__img text-center">
+                                <img class="footer__logo"
+                                src={funnel.company.logo + '&w=66&h=41'}
+                                alt={funnel.company.name}>
+                            </p>
+                            <p class="footer__p">
+                                <a href="#terms-conditions" data-toggle="modal" data-target="#terms-conditions">Terms &amp;
+                                Conditions</a>
+                                <a href="#privacy-policy" data-toggle="modal" data-target="#privacy-policy">Privacy Policy</a>
+                                <a href="#contact-us" data-toggle="modal" data-target="#contact-us">Contact Us</a>
+                            </p>
+                            <p class="footer__p">
+                                <a class="link" href={'tel:' + funnel.company.phone}>
+                                    <img src="https://del-mar-laboratories.imgix.net/ceraliftskin.com/phone-icon-alt.png?fit=max&auto=format&w=27"
+                                    width="27" alt="Call Us" loading="lazy">
+                                    {funnel.company.phone}
+                                </a>
+                                <span class="link">
+                                    <img src="https://del-mar-laboratories.imgix.net/ceraliftskin.com/time-icon-alt.png?fit=max&auto=format&w=27"
+                                    width="27" alt="Hours" loading="lazy">
+                                    M - F / 8am-6pm EST S-S
+                                </span>
+                                <a class="link" href={'mailto:' + funnel.company.email}>
+                                    <img src="https://del-mar-laboratories.imgix.net/ceraliftskin.com/email-icon.png?fit=max&auto=format&w=27"
+                                    width="27" alt="Email Us" loading="lazy">
+                                    {funnel.company.email}
+                                </a>
+                            </p>
+                            <p class="text-center footer__p__disclaimer">These statements have not been evaluated by the FDA.
+                                Our
+                                products are not intended to diagnose, cure, treat or prevent any disease.
+                            Results may vary from individual to individual.</p>
+                            <p class="footer__p footer__p--sm text-center">All Material © <span id="currentYear">-</span>, {funnel.company.name}.</p>
+                        </div>
+                    </footer>
+                </div>
+                
+                <!-- END FOOTER -->
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // @ts-ignore
+    document.getElementById("currentYear").innerHTML = new Date().getFullYear();
+});
+</script>

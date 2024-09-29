@@ -1,0 +1,67 @@
+---
+    const { header, funnel } = Astro.props;
+---
+
+<style>
+    .logo {
+        width: 84px;
+        margin: 0 auto 15px;
+        display: block;
+    }
+
+    @media only screen and (max-width:991px) {
+        .logo {
+            margin-top: 8px;
+        }
+    }
+
+    @media only screen and (max-width:767px) {
+        .logo {
+            margin-top: 6px;
+        }
+    }
+
+    .steps-box {
+        text-align: center;
+    }
+
+    .steps-box li {
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: 500;
+        padding: 0 17px;
+        position: relative;
+        letter-spacing: 1px;
+        color: #808080;
+    }
+
+    .steps-box li:before {
+        content: '\003e';
+        position: absolute;
+        top: 0;
+        right: -5px;
+    }
+
+    .steps-box li:last-child:before {
+        display: none;
+    }
+
+    .steps-box li span {
+        font-weight: 500;
+        color: #000000;
+    }
+</style>
+
+{ (header.enabled == true) &&
+<!-- HEADER COMPONENT -->
+<img src={funnel.company.logo} alt="logo" class="logo" width="84" height="52" />
+<ul class="steps-box">
+    <li><span>Package</span></li>
+    <li><span>Checkout</span></li>
+    <li>Summary</li>
+</ul>
+
+<!-- HEADER COMPONENT -->
+}

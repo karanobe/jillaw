@@ -1,0 +1,147 @@
+---
+const {footer , funnel}  = Astro.props;
+---
+
+<style>
+.footer__top-bar {
+	background-color: rgb(54, 60, 62);
+}
+
+.footer__top-bar .container {
+	padding-left: 25px;
+	padding-right: 25px;
+}
+
+.footer__top-bar p {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    font-family: 'Noto Serif', serif;
+    color: rgb(184, 184, 184);
+}
+
+.footer__bottom-bar {
+	background-color: rgb(29, 36, 43);
+}
+
+.footer__bottom-bar .container {
+	padding-left: 25px;
+	padding-right: 25px;
+}
+
+.footer__bottom-bar_content {
+
+}
+
+.footer__logo{
+	margin-top: 40px;
+	margin-bottom: 30px;
+}
+.footer__logo img {
+	margin: auto;
+	width: 100px;
+}
+
+.footer-list {
+	padding: 0;
+}
+
+.footer-list li, .footer-list li a {
+	color: rgb(182, 182, 182);
+	font-family: 'Noto Serif', serif;
+	line-height: 29px;
+	font-size: 24px;
+	font-weight: 400;
+	list-style: none;
+    margin-bottom: 30px;
+}
+
+@media (min-width:768px) {
+
+	.citations h2 {
+		font-family: sans-serif;
+		font-size: 24px;
+		font-weight: 400;
+
+	}		
+
+	.footer__top-bar .container {
+		padding-top: 15px;
+		padding-bottom: 15px;
+	}
+
+	.footer__top-bar p {
+		line-height: 16px;
+		font-size: 13px;
+	}
+	.footer__logo{
+		margin-top: 30px;
+	}
+	.footer__logo img {
+		width: 100px;
+	}
+	.footer-list {
+		padding: 0;
+	}
+
+	.footer-list li {		
+		display: inline-block;
+	    padding-right: 10px;
+	    padding-left: 10px;
+	    border-right: 2pt solid rgb(182, 182, 182);
+	}	
+
+	.footer-list li:last-child {
+		border: none;
+		padding-right: 0;
+	}
+
+	.footer-list li, .footer-list li a {
+		line-height: 19px;
+		font-size: 16px;
+		font-weight: 400;		
+	}
+}
+</style>
+
+<footer class="footer">
+    <div class="footer__top-bar text-white text-center">
+        <div class="container footer__top-bar_container">
+            <p>*The views and opinions of {footer.doctorName} do not necessarily represent those of the organizations with which he is currently, or formerly, associated.</p>
+            <p>Representations regarding the efficacy and safety of BioLuna have not been evaluated by the Food and Drug Administration. The FDA only evaluates foods and drugs, not supplements like these products. These products are not intended to diagnose, prevent, treat, or cure any disease. <a title="references" href="https://asset.suncoastsciences.com/bioluna/bioluna-references.pdf" target="_blank" rel="noopener">Click here</a> to find evidence of a test, analysis, research, or study describing the benefits, performance or efficacy of GABA based on the expertise of relevant professionals.</p>
+        </div>
+    </div>
+    <div class="footer__bottom-bar text-white text-center">
+        <div class="container">
+            <div class="footer__bottom-bar_content text-white">
+                <div class="footer__logo">
+                    <img class="img-responsive" src={funnel.company.logo_alt + "?fit=max&auto=format&w=100&h=62"} alt={funnel.company.name} width="100" loading="lazy">
+                </div>
+                <ul class="footer-list list-inline">
+                    <li>
+                        © {funnel.company.name} All Rights Reserved
+                    </li>
+                    <li>
+                        <a href={footer.homeUrl} target="_blank">Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#terms-conditions" data-toggle="modal" data-target="#terms-conditions">Terms &amp; Conditions
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#privacy-policy" data-toggle="modal" data-target="#privacy-policy">Privacy Policy
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#contact-us" data-toggle="modal" data-target="#contact-us">Contact Us
+                        </a>
+                    </li>			
+                    <li>
+                        <a href={footer.studiesUrl} target="_blank">Studies</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>

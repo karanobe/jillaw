@@ -1,0 +1,261 @@
+---
+    const { carousel } = Astro.props
+---
+
+<style is:global>
+    .carousel-slide {
+        display: none;
+        text-align: center;
+    }
+
+    .carousel-slide img {
+        vertical-align: middle;
+        width: 100%;
+    }
+
+    .carousel-slide.active {
+        display: block;
+    }
+
+    .thumbnails {
+        padding-bottom: 20px;
+    }
+
+    .thumbnail {
+        height: 9px;
+        cursor: pointer;
+        width: 9px;
+        margin: 3.3px;
+        display: inline-block;
+        -webkit-transition: background-color 0.6s ease;
+        -o-transition: background-color 0.6s ease;
+        transition: background-color 0.6s ease;
+        float: none;
+        padding: 3px 0;
+        background: #000;
+        opacity: 0.2;
+        border-radius: 50%;
+    }
+
+    .thumbnail.active {
+        opacity: 0.5;
+    }
+
+    .thumbnail img {
+        height: 100%;
+        width: 100%;
+    }
+</style>
+<style>
+    .carousel-arrows {
+        position: relative;
+        top: 230px;
+        z-index: 1049;
+    }
+
+    .carousel-previous,
+    .carousel-next {
+        cursor: pointer;
+        width: 36px;
+        height: 36px;
+        opacity: .75;
+        background-color: #000;
+        border-radius: 20px;
+        margin: -8px 12px;
+        font-size: 0;
+        line-height: 0;
+        top: 50%;
+        -webkit-transform: translate(0, -50%);
+        -ms-transform: translate(0, -50%);
+        transform: translate(0, -50%);
+        color: transparent;
+        border: none;
+        outline: 0;
+        padding: 10px;
+    }
+
+    .carousel-previous {
+        float: left;
+    }
+
+    @media (min-width: 992px) {
+        .carousel-previous {
+            position: relative;
+            left: 5px;
+        }
+    }
+
+    .carousel {
+        margin: 30px 0;
+    }
+
+    .carousel-container {
+        position: relative;
+        margin: auto;
+        width: 430px;
+        height: 434px;
+    }
+
+
+    .fade {
+        -webkit-animation-name: fade;
+        -webkit-animation-duration: 1.5s;
+        animation-name: fade;
+        animation-duration: 1.5s;
+    }
+
+    @-webkit-keyframes fade {
+        from {
+            opacity: .4;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes fade {
+        from {
+            opacity: .4;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    .carousel-next {
+        float: right;
+    }
+
+    @media (min-width: 992px) {
+        .carousel-next {
+            position: relative;
+            right: 5px;
+        }
+    }
+
+    .carousel-previous:before,
+    .carousel-next:before {
+        font-size: 16px;
+        line-height: 1;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    .carousel-previous:before {
+        content: url(https://sun-coast-sciences.imgix.net/arrow-left.png);
+    }
+
+    .carousel-next:before {
+        content: url(https://sun-coast-sciences.imgix.net/arrow-right.png);
+    }
+
+</style>
+
+<div id="carousel">
+    <div class="carousel-arrows">
+        <span class="carousel-previous">Previous</span>
+        <span class="carousel-next">Next</span>
+    </div>
+    <div class="carousel-container" id="carouselImages">
+
+    </div>
+
+
+    <div style="text-align:center" class="thumbnails" id="thumbnails">
+    </div>
+
+</div>
+<script is:inline define:vars={{ carousel }}>
+    window.carousel = carousel
+</script>
+<script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+        var carouselImages = document.getElementById('carouselImages');
+
+        var thumbnails = document.getElementById('thumbnails');
+        // @ts-ignore
+        carousel.forEach(function (el, index) {
+            var slide = document.createElement('div');
+            slide.className = 'carousel-slide';
+
+            if (index === 0) {
+                // @ts-ignore
+                slide.innerHTML = `<img src="${carousel[index].image}" alt="${carousel[index].alt}">`;
+            } else {
+                // @ts-ignore
+                slide.innerHTML = `<img src="${carousel[index].image}" loading="lazy" alt="${carousel[index].alt}">`;
+            }
+
+            carouselImages.appendChild(slide);
+                        
+            var thumbnail = document.createElement('span');
+            thumbnail.className = 'thumbnail';
+            thumbnail.setAttribute('data-index', index);
+            thumbnails.appendChild(thumbnail);
+
+            if (index === 0) {
+                slide.classList.add('active');
+                thumbnail.classList.add('active');
+            }
+        });
+    });
+
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelector(".carousel-previous").addEventListener("click", function (e) {
+            e.preventDefault();
+            navigateCarousel(-1);
+        });
+
+        document.querySelector(".carousel-next").addEventListener("click", function (e) {
+            e.preventDefault();
+            navigateCarousel(1);
+        });
+
+        document.querySelectorAll(".thumbnail").forEach(function (thumbnail) {
+            thumbnail.addEventListener("click", function (e) {
+                e.preventDefault();
+                showSlide(parseInt(this.getAttribute("data-index")));
+            });
+        });
+
+        function navigateCarousel(direction) {
+            var thumbnails = document.querySelectorAll(".thumbnail");
+            var current = document.querySelector(".thumbnail.active");
+            var index = Array.prototype.indexOf.call(thumbnails, current);
+            var length = thumbnails.length;
+            var newIndex = (index + direction + length) % length;
+            showSlide(newIndex);
+        }
+
+        function showSlide(index) {
+            var slides = document.querySelectorAll(".carousel-slide");
+            var thumbnails = document.querySelectorAll(".thumbnail");
+
+            slides.forEach(function (slide) {
+                // @ts-ignore
+                slide.style.display = 'none';
+                slide.classList.remove('active');
+            });
+
+            thumbnails.forEach(function (thumbnail) {
+                thumbnail.classList.remove('active');
+            });
+
+            // @ts-ignore
+            slides[index].style.display = 'block';
+            slides[index].classList.add('active');
+            thumbnails[index].classList.add('active');
+        }
+
+        // Initialize first slide to be shown
+        showSlide(0);
+    });
+
+
+    // END CAROUSEL
+</script>

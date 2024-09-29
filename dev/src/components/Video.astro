@@ -1,0 +1,211 @@
+---
+const {video}  = Astro.props;
+---
+
+<style>
+.doctor-description__p {
+	font-family: 'Noto Serif', serif;
+	font-size: 17px;
+	font-weight: 400;
+	line-height: 20px;
+}
+
+main.container {
+    background-color: #fff;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding-bottom: 30px;
+    padding-left: 25px;
+    padding-right: 25px;    
+}
+
+.video__holder {
+    margin: auto;
+    margin-bottom: 10px;	
+}
+
+.video__button {
+	display: none;
+    font-family: 'Noto Serif', serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: #fff;
+    border: 3px solid rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    background-color: rgb(243, 76, 62);    
+    width: 411px;
+    padding: 5px;
+    text-transform: uppercase;
+}
+
+.video__button:hover {
+	text-decoration: none;
+	color: #fff;
+	background-color: rgb(247, 110, 99);
+}
+
+main.citations-container {
+    margin-top: 30px;
+    padding-top: 10px;
+    background-color: #fff;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    min-height: 336px;
+}
+
+@media (min-width:768px) {
+	main.container {
+	    border-top-right-radius: 10px;
+	    border-top-left-radius: 10px;
+	    border-bottom-right-radius: 10px;
+	    border-bottom-left-radius: 10px;
+		width: 1170px !important;
+	    padding: 50px 70px;   
+	}
+
+	.video__information-panel {
+		max-width: 252px;
+		margin: auto;
+
+	}
+
+	.video__holder {
+		width: 615px;
+		margin-bottom: 25px;
+	}
+
+	.video__text {
+		font-family: 'Noto Serif', serif;
+		line-height: 17px;
+		font-size: 14px;
+		font-weight: 300;	
+		color: rgb(51, 51, 51);	
+		padding: 15px;	
+	}
+	.video__button {
+	    width: 597px;
+		padding: 13px;
+	}
+
+	main.citations-container {
+		margin-top: 60px;
+	    border-top-right-radius: 0;
+	    border-top-left-radius: 0;
+	    min-height: 273px;
+	}
+
+	main.citations-container .container {
+		width: 100%;
+	}
+}    
+</style>
+
+<main class="container">
+    <section class="video wrap">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-8" style="min-height: 300px;">
+                <div class="video__holder">
+                    <div id={"vidalytics_embed_" + video.id} style="width: 100%; position:relative; padding-top: 100%;"></div>
+                    <script is:inline define:vars={{video}}>
+
+                        var videoId = video.id;
+                        var fullVideoId = "vidalytics_embed_" + videoId;
+                        var embedLink = "https://quick.vidalytics.com/embeds/dmpsCGvb/" + videoId + "/";
+                    
+                        (function (v, i, d, a, l, y, t, c, s) {
+                            y='_'+d.toLowerCase();c=d+'L';if(!v[d]){v[d]={};}if(!v[c]){v[c]={};}if(!v[y]){v[y]={};}var vl='Loader',vli=v[y][vl],vsl=v[c][vl + 'Script'],vlf=v[c][vl + 'Loaded'],ve='Embed';
+                            if (!vsl){vsl=function(u,cb){
+                                if(t){cb();return;}s=i.createElement("script");s.type="text/javascript";s.async=1;s.src=u;
+                                if(s.readyState){s.onreadystatechange=function(){if(s.readyState==="loaded"||s.readyState=="complete"){s.onreadystatechange=null;vlf=1;cb();}};}else{s.onload=function(){vlf=1;cb();};}
+                                i.getElementsByTagName("head")[0].appendChild(s);
+                            };}
+                            vsl(l+'loader.min.js',function(){if(!vli){var vlc=v[c][vl];vli=new vlc();}vli.loadScript(l+'player.min.js',function(){var vec=v[d][ve];t=new vec();t.run(a);});});
+                        })(window, document, 'Vidalytics', `${fullVideoId}`, `${embedLink}`);
+                    </script>
+                </div>
+                <div class="hidden-xs video__button-holder delayed desktop-delayed">
+                    <a href="/order/choose" class="video__button text-center center-block">
+                        {video.buttonText}
+                        </a>
+                </div>
+            </div>
+            <div class="col-sm-4 col-md-4 hidden-xs">
+                <div class="video__information-panel">
+                    <img class="video__image img-responsive" src={video.doctorImg} alt={video.doctorName} loading="lazy">
+                    <p class="video__text">
+                        {video.doctorBio}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="doctor-description visible-xs">
+        <div class="video__button-holder delayed desktop-delayed">
+            <a href="/order/choose" class="video__button text-center center-block">
+                {video.buttonText}
+            </a>
+        </div> 
+        <div class="row flex-row__alt">
+            <div class="col-xs-8">
+                <p class="doctor-description__p">{video.doctorMobileBio}</p>
+            </div>
+            <div class="col-xs-4">
+                <p class="doctor-description__p">
+                    <img class="center-block img-responsive" src={video.doctorImg} alt={video.doctorName} loading="lazy">
+                </p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<script is:inline define:vars={{ video }}>
+    window.video = video
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {    
+    // @ts-ignore
+    const dropDownTime = video.dropDownTime;
+    const daysToCookieExpires = 30; // cookie stays in browser this many days
+    // @ts-ignore
+    const pageCookieName = video.cookieName;
+
+    if (document.cookie.includes(pageCookieName)) {
+        // Already visited.
+        console.log('already visited. Button will drop in 5000 milliseconds.');
+        showDelayed(5000);
+    } else {
+        // First visit.
+        console.log(`first visit. button will drop in ${dropDownTime} milliseconds.`);
+        showDelayed(dropDownTime);
+        createCookie(pageCookieName, "yes", daysToCookieExpires);
+    }
+
+    function createCookie(name: any, value: string, days: number) {
+        const date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        // @ts-ignore
+        document.cookie = `${name}=${value}; path=/; expires=${date.toGMTString()}`;
+    }
+
+    function showDelayed(dropTime: number | undefined) {
+        setTimeout(() => {
+            var cta = document.getElementsByClassName("video__button");
+                for(var i = 0; i < cta.length; i++){
+                    // @ts-ignore
+                    cta[i].style.display = "block";
+            }        
+            pushVslCtaDataLayerEvent();
+        }, dropTime);
+    }
+
+    function pushVslCtaDataLayerEvent() {
+        // @ts-ignore
+        window.dataLayer = window.dataLayer || [];
+        // @ts-ignore
+        window.dataLayer.push({
+            event: 'vsl-cta-dynamic'
+        });
+    }
+})
+
+</script>

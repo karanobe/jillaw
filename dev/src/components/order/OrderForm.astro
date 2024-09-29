@@ -1,0 +1,445 @@
+---
+
+---
+
+<style>
+    .checkout-box__fields {
+        width: 100%;
+        margin: 15px 0 0;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .fields__elements {
+        margin: 6px 0;
+        width: 100%;
+    }
+
+    .fields__elements--half {
+        width: 48%;
+    }
+
+    .fields__elements--col-6 {
+        width: 58%;
+    }
+
+    .fields__elements--col-4 {
+        width: 40%;
+    }
+
+    .fields__elements--col-2 {
+        width: 28%;
+    }
+
+    .fields__elements--col-8 {
+        width: 38%;
+        position: relative;
+    }
+
+    .fields__elements label {
+        width: 100%;
+        font-size: 18px;
+        line-height: 24px;
+        color: #1c1c1c;
+        margin-bottom: 5px;
+        text-align: left;
+        font-weight: normal;
+        letter-spacing: 0.3px;
+    }
+
+    .fields__elements input[type='text'],
+    .fields__elements select,
+    .fields__elements input[type='tel'],
+    .fields__elements input[type='email'] {
+        width: 100%;
+        border: 1px solid #cecccc;
+        padding: 12px 15px;
+        -webkit-appearance: none;
+        font-size: 17px;
+        font-family: 'Circular Std';
+        border-radius: 3px;
+        font-weight: normal;
+        color: #000;
+        outline: none;
+    }
+
+    .fields__elements select {
+        background: url(https://sun-coast-sciences.imgix.net/checkout/images/sel-img.png?fit=max&auto=format&w=11) center right 15px no-repeat #fff;
+    }
+
+    @media only screen and (max-width:991px) {
+
+        .fields__elements label {
+            font-size: 17px;
+            line-height: 23px;
+        }
+
+        .checkout-button {
+            height: 70px;
+            line-height: 66px;
+            font-size: 26px;
+        }
+
+        .checkout-button img {
+            width: 38px;
+        }
+
+    }
+
+    @media only screen and (max-width:767px) {
+        .fields__elements--half {
+            width: 100%;
+        }
+
+        .fields__elements--col-2 {
+            width: 48%;
+        }
+
+        .fields__elements--col-6 {
+            width: 100%;
+        }
+
+        .fields__elements--col-8 {
+            width: 48%;
+        }
+
+        .fields__elements label {
+            width: auto;
+        }
+
+        .cc-icon {
+            margin: 0 0 8px 0;
+            width: 150px;
+            float: right;
+        }
+
+        .checkout-button {
+            height: 60px;
+            font-size: 21px;
+            line-height: 56px;
+        }
+    }
+
+    @media only screen and (max-width:375px) {
+        .checkout-button {
+            font-size: 18px;
+            line-height: 25px;
+        }
+
+        .cc-icon {
+            width: 110px;
+        }
+    }
+
+    .estimated-arrival__text {
+        font-size: 19px;
+    }
+
+    .estimated-arrival__date {
+        color: #ff0000;
+    }
+
+    /*SUBSCRIBE*/
+    .checkbox-group {
+        margin-top: 0.5em;
+        margin-left: 0.5em;
+    }
+
+    .checkbox {
+        color: #fff;
+        text-align: left;
+        font-family: arial;
+        display: block;
+        position: relative;
+        padding-left: 30px;
+        margin-bottom: 0 !important;
+        cursor: pointer;
+        font-size: 18px;
+    }
+
+    .checkbox input {
+        position: absolute;
+        z-index: -1;
+        opacity: 0;
+    }
+
+    .checkbox_indicator {
+        position: absolute;
+        top: 2px;
+        left: 0;
+        height: 24px;
+        width: 23px;
+        background: #FFFFFF;
+        border: 1px solid #cc6500;
+    }
+
+    .checkbox-radio .checkbox_indicator {
+        border-radius: undefined;
+    }
+
+    .checkbox:hover input~.checkbox_indicator,
+    .checkbox input:focus~.checkbox_indicator {
+        background: #fff;
+    }
+
+    .checkbox input:checked~.checkbox_indicator {
+        background: #cc6500;
+    }
+
+    .checkbox:hover input:not([disabled]):checked~.checkbox_indicator,
+    .checkbox input:checked:focus~.checkbox_indicator {
+        background: #cc6500;
+    }
+
+    .checkbox_indicator:after {
+        box-sizing: unset;
+        content: '';
+        position: absolute;
+        display: none;
+    }
+
+    .checkbox input:checked~.checkbox_indicator:after {
+        display: block;
+    }
+
+    .green-checkbox .checkbox_indicator:after {
+        left: 8px;
+        top: 5px;
+        width: 3px;
+        height: 8px;
+        border: solid #ffffff;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+    }
+
+    .checkbox-subtext {
+        margin-left: 45px;
+        margin-right: 20px;
+        margin-top: 10px;
+    }
+
+
+    .subscribe {
+        background: #fff;
+        font-size: 14px;
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 30px;
+        margin-bottom: 10px;
+    }
+
+    .subscribe__details {
+        background-color: #fff;
+        padding: 9px 10px 24px;
+        font-size: 14px;
+    }
+
+    .subscribe__details__item .price {
+        float: right;
+    }
+
+    .subscribe__details hr {
+        margin: 5px 0;
+        border-top: 1pt solid lightgrey;
+    }
+
+
+    .subscribe__header {
+        padding: 20px;
+        margin-top: 0;
+        background: #ff8c1a;
+        color: #fff;
+        text-align: center;
+        font-weight: 300;
+        margin-bottom: 0;
+    }
+
+    .subscribe__p {
+        background: #fff;
+        margin-bottom: 0;
+        padding: 10px;
+        border-bottom: 1pt solid lightgrey;
+        font-weight: 700;
+    }
+</style>
+
+<!-- ORDER FORM -->
+
+<div>
+
+    <div class="clearall visible-xs"></div>
+    <div class="checkout-box__heading">
+        <h3>Shipping Information</h3>
+        <h4>Tell us where to send your <span class="checkout__product-name">-</span><sup
+                class="checkout__product-rights-symbol"></sup></h4>
+    </div>
+
+    <div class="checkout-box__fields">
+        <div class="fields__elements fields__elements--half">
+            <label for="first-name">First Name *</label>
+            <input type="text" name="firstName" id="first-name" placeholder="" tabindex="1" autocorrect="off"
+                autocapitalize="off" spellcheck="false" />
+        </div>
+        <div class="fields__elements fields__elements--half">
+            <label for="last-name">Last Name *</label>
+            <input type="text" name="lastName" id="last-name" placeholder="" tabindex="2" autocorrect="off"
+                autocapitalize="off" spellcheck="false" />
+        </div>
+        <div class="fields__elements fields__elements--half">
+            <label for="email">Email *</label>
+            <input type="text" name="emailAddress" id="email" placeholder="" tabindex="3" autocorrect="off"
+                autocapitalize="off" spellcheck="false" autocomplete="email" />
+        </div>
+        <div class="fields__elements fields__elements--half">
+            <label for="phone-number">Phone Number *</label>
+            <input type="tel" name="phoneNumber" id="phone-number" placeholder="" tabindex="4" autocorrect="off"
+                autocapitalize="off" spellcheck="false" autocomplete="tel" />
+        </div>
+        <div class="fields__elements">
+            <label for="shipping-address">Shipping Address *</label>
+            <input type="text" name="shippingAddress1" id="shipping-address" placeholder="" tabindex="5"
+                autocorrect="off" autocomplete="shipping address-line1" />
+        </div>
+        <div class="fields__elements fields__elements--half">
+            <label for="unit">Apt. / Unit #</label>
+            <input type="text" name="shippingAddress2" id="unit" placeholder="" tabindex="6" autocorrect="off"
+                autocomplete="shipping address-line2" />
+        </div>
+        <div class="fields__elements fields__elements--half">
+            <label for="city">City *</label>
+            <input type="text" name="shippingCity" id="city" placeholder="" tabindex="7"
+                autocomplete="shipping address-level2" />
+        </div>
+        <div class="fields__elements fields__elements--half">
+            <label for="zip">Zip Code *</label>
+            <input type="text" name="shippingZip" id="zip" placeholder="" tabindex="8"
+                autocomplete="shipping postal-code" autocorrect="off" />
+        </div>
+        <div class="fields__elements fields__elements--half">
+            <label for="state">State *</label>
+            <select name="shippingState" id="state" tabindex="9" autocorrect="off" autocapitalize="off"
+                spellcheck="false" autocomplete="shipping address-level1">
+            </select>
+        </div>
+
+        <div class="fields__elements fields__elements">
+            <span class="estimated-arrival__text"> Estimated Delivery: <span class="estimated-arrival__date">-</span>
+            </span>
+        </div>
+
+        <input type="hidden" name="shippingCountry" value="US" />
+    </div>
+
+    <!-- SUBSCRIBE & SAVE Start -->
+    <div class="subscribe">
+        <h2 class="subscribe__header">
+            Dr. Rosenberg Recommends:<br />
+            <b>Subscribe & Save 10%</b>
+        </h2>
+        <ul class="order-list order-list--alt">
+            <li class="order-list__item">Save Big With An Additional 10% Discount</li>
+            <li class="order-list__item">Receive Fresh Supply Every <span
+                    class="checkout__product-rebill-cycle">-</span> Days</li>
+            <li class="order-list__item">Guaranteed Availability</li>
+            <li class="order-list__item">No Obligation, Cancel Any Time!</li>
+            <li class="order-list__item">20% Off Store-Wide While Subscribed</li>
+        </ul>
+        <div class="subscribe__check">
+            <div class="checkbox-group">
+                <label class="checkbox green-checkbox">
+                    <b>YES!</b> I want to sign up for the VIP Subscribe & Save Program and <b>Save an Additional
+                        10%!</b>
+                    <input type="checkbox" name="subscription" data-product-id="714" data-campaign-id="511"
+                        value="subscription" />
+                    <div class="checkbox_indicator"></div>
+                </label>
+            </div>
+        </div>
+    </div>
+    <!-- SUBSCRIBE & SAVE End -->
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="scroll"></div>
+            <div class="subscribe__disclaimer">
+                <p class="subscribe__disclaimer__copy">
+                    By clicking "Place My Encrypted Order Now" I will be enrolled in AutoRefill and receive a new supply
+                    every month (at the price above). I am under no obligation or contract, and I can cancel any time by
+                    calling&nbsp;<a href="tel:18882816816" target="_blank"
+                        rel="noopener noreferrer">1-888-281-6816</a>&nbsp;or emailing&nbsp;
+                    <a href="mailto:mail@suncoastsciences.com" target="_blank"
+                        rel="noopener noreferrer">mail@suncoastsciences.com</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="checkout-box__heading checkout-box__heading--step2">
+        <h3>Payment Information</h3>
+        <h4>Final step to complete your purchase</h4>
+    </div>
+
+    <div class="checkout-box__fields payment-form">
+        <div class="fields__elements fields__elements--col-6">
+            <label for="card-number">Card Number *</label>
+            <img loading="lazy"
+                src="https://sun-coast-sciences.imgix.net/checkout/images/cc-cards.png?fit=max&auto=format&w=243&h=36"
+                alt="card" class="cc-icon visible-xs" width="150" height="22" />
+            <div style="position: relative;">
+                <div class="payment-form__field--credit-card-icon payment-form__field--unknown-credit-card"
+                    style="position: absolute; height: 33px; top: 15px; right: 1px;"></div>
+                <input class="form-group__input" id="card-number" type="text" name="creditCardNumber" placeholder=""
+                    maxlength="23" tabindex="10" autocorrect="off" autocapitalize="off" spellcheck="false"
+                    autocomplete="cc-number" />
+                <input type="hidden" name="creditCardType" id="credit-card-type" value="unknown" />
+            </div>
+        </div>
+        <div class="fields__elements fields__elements--col-4 hidden-xs">
+            <img loading="lazy"
+                src="https://sun-coast-sciences.imgix.net/checkout/images/cc-cards.png?fit=max&auto=format&w=243&h=36"
+                alt="card" class="cc-icon" />
+        </div>
+        <div class="fields__elements fields__elements--col-2">
+            <label for="exp-month">Expire Date*</label>
+            <select name="expirationMonth" id="exp-month" tabindex="11" autocorrect="off" autocapitalize="off"
+                spellcheck="false" autocomplete="cc-expiration">
+                <option value="">Month</option>
+                <option value="01">01</option>
+                <option value="02">02</option>
+                <option value="03">03</option>
+                <option value="04">04</option>
+                <option value="05">05</option>
+                <option value="06">06</option>
+                <option value="07">07</option>
+                <option value="08">08</option>
+                <option value="09">09</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+            </select>
+        </div>
+        <div class="fields__elements fields__elements--col-2">
+            <label for="exp-year">&nbsp;</label>
+            <select name="expirationYear" id="exp-year" tabindex="12" autocorrect="off" autocapitalize="off"
+                spellcheck="false">
+                <option value="">Year</option>
+            </select>
+        </div>
+        <div class="fields__elements fields__elements--col-8">
+            <label for="cvv">CVV *</label>
+            <input type="text" name="cvv" id="cvv" placeholder="" tabindex="13" maxlength="4" autocorrect="off"
+                autocapitalize="off" spellcheck="false" autocomplete="cc-csc" />
+        </div>
+        <button class="payment-form__next-button checkout-button" tabindex="14">
+            Place My Encrypted Order <img
+                src="https://sun-coast-sciences.imgix.net/checkout/images/hand-icon.png?fit=max&auto=format&w=99&h=65"
+                class="hidden-xs" loading="lazy" />
+        </button>
+        <img loading="lazy"
+            src="https://sun-coast-sciences.imgix.net/checkout/images/secure-icons.jpeg?fit=max&auto=format&w=377"
+            width="377" height="47" alt="secure logos" class="secure-logos" />
+    </div>
+</div>
+
+<!-- ORDER FORM -->

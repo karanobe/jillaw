@@ -1,0 +1,53 @@
+<style>
+.view-box{
+    width:100%;
+    border:2px solid #307284;
+    padding:10px;
+    font-size:20px;
+    line-height:24px;
+    font-weight:500;
+    color:#000;
+    border-radius:4px;
+    margin-top:20px;
+    text-align:center;
+    letter-spacing:0.5px;
+}
+.view-box span{color:#ff0000; display:inline-block; vertical-align:top;}
+#view-box__stopwatch{ width: 56px;}
+.view-box img{
+    display:inline-block;
+    vertical-align: top;
+    margin:1px 7px -1px;
+}
+
+@media only screen and (max-width:1199px){
+    .view-box{font-size:18px; letter-spacing:0px;}
+    #view-box__stopwatch{ width: 48px;}
+}
+
+@media only screen and (max-width:991px){
+    .view-box{font-size:15px; line-height:20px; padding:8px 5px;}
+    .view-box img{width:15px; margin:2px 3px 0;}
+    #view-box__stopwatch{width:36px;}
+}
+
+@media only screen and (max-width:767px){
+ .view-box{margin-bottom:20px; font-size:14px;}   
+}
+</style>
+
+<!-- TIMER COMPONENT -->
+<div class="view-box">
+    Your Discount Is Reserved For
+    <img
+        loading="lazy"
+        src="https://sun-coast-sciences.imgix.net/checkout/images/hourglass-icon.svg?fit=max&auto=format&w=21&h=25"
+        style="filter: invert(23%) sepia(92%) saturate(4802%) hue-rotate(353deg) brightness(89%) contrast(130%);"
+        alt="clock"
+        width="21"
+        height="25"
+    />
+    <span id="view-box__stopwatch" class="countdown">10:00</span> &nbsp;<span>Minutes</span>
+</div>
+
+<!-- TIMER COMPONENT -->
