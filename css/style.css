@@ -603,6 +603,8 @@ img{
 
 .main-header .header-upper .logo-box .logo{
 	position:relative;
+	max-width: 270px;
+	margin: auto;
 }
 
 .main-header .outer-box{
@@ -649,6 +651,14 @@ img{
 	font-weight:500;
 	margin-top:10px;
 	font-family: 'Oswald', sans-serif;
+}
+
+.main-header .phone-box a {
+	color: #fff;
+}
+
+.main-header .phone-box a:hover {
+	color: #e1a122;
 }
 
 /* Main Menu */
@@ -725,6 +735,11 @@ img{
 
 .sticky-header .logo{
 	padding:11px 0px 9px;
+}
+
+.sticky-header .logo img{
+	max-width: 300px;
+	margin: auto;
 }
 
 .fixed-header .sticky-header{
@@ -1828,10 +1843,11 @@ img{
 	left:0px;
 	top:0px;
 	right:0px;
-	height:825px;
+	height:100%;
 	background-attachment:fixed;
 	background-position:center center;
 	background-repeat:no-repeat;
+	background-size: cover;
 }
 
 .counter-section .image-layer:before{
@@ -1859,7 +1875,7 @@ img{
 .fact-counter .counter-column{
 	position:relative;
 	z-index:1;
-	margin-bottom:30px;
+	margin: auto auto 30px auto;
 }
 
 .fact-counter .counter-column .inner{
@@ -2970,7 +2986,7 @@ img{
 
 .main-footer .widgets-section{
 	position:relative;
-	padding: 260px 0px 30px;
+	padding: 60px 0px 30px;
 }
 
 .main-footer .footer-column{
@@ -2997,6 +3013,8 @@ img{
 .main-footer .logo-widget .logo{
 	position:relative;
 	margin-bottom:26px;
+	width: 100%;
+	max-width: 300px;
 }
 
 .main-footer .logo-widget .text{
@@ -6533,4 +6551,9 @@ img{
 .comment-form .form-group input[type="submit"]:hover,
 .comment-form button:hover{
 	
+}
+
+.pending {
+	background-color: pink;
+	color: #000 !important;
 }
