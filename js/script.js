@@ -785,3 +785,8 @@
 	});	
 
 })(window.jQuery);
+
+document.addEventListener("DOMContentLoaded", function() {
+	// @ts-ignore
+	document.getElementById("currentYear").innerHTML = new Date().getFullYear();
+});

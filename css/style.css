@@ -1604,6 +1604,16 @@ img{
 	background-color:#f9f9f9;
 }
 
+.services-section .row {
+	display: flex;
+    -ms-flex-wrap: wrap;
+    flex-direction: row;
+    align-content: space-between;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: center;	
+}
+
 .services-section .inner-container{
 	position:relative;
 	z-index:10;
@@ -1620,6 +1630,7 @@ img{
 	padding:45px 30px;
 	overflow:hidden;
 	background-color:#ffffff;
+	height: 100%;
 }
 
 .services-block .inner-box .content{
