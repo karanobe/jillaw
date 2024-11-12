@@ -1789,6 +1789,14 @@ img{
 	font-family: 'Open Sans', sans-serif;
 }
 
+@media only screen and (max-width: 1140px){
+	.welcome-section .image-column .inner-column .case-box span{
+		font-size:20px;
+		line-height:1em;
+		margin-top:25px;
+	}	
+}
+
 .welcome-section .content-column{
 	position:relative;
 	float:left;
@@ -6567,4 +6575,25 @@ img{
 .pending {
 	background-color: pink;
 	color: #000 !important;
+}
+
+.hidden {
+	display: none !important;
+}
+
+.img-right {
+    float: right;
+    max-width: 500px;
+    width: 100%;
+    margin-left: 40px;
+    margin-bottom: 20px;	
+}
+
+@media only screen and (max-width: 911px){
+	.img-right {
+		float: unset;
+		max-width: 250px;
+		margin: auto;
+		margin-bottom: 20px;
+	}	
 }

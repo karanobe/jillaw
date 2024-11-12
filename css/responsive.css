@@ -61,6 +61,10 @@
 	.welcome-section .image-column .inner-column .case-box{
 		left:0px;
 		bottom:0px;
+	    width: 150px;
+	    height: 150px;
+	    font-size: 60px;
+	    padding-top: 25px;		
 	}
 	
 	.welcome-section .content-column .inner-column{
