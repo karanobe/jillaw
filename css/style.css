@@ -6597,3 +6597,9 @@ img{
 		margin-bottom: 20px;
 	}	
 }
+
+.banner {
+	background-image: url(../images/main-slider/bg-1.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
