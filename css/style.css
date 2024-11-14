@@ -6592,7 +6592,6 @@ img{
 @media only screen and (max-width: 911px){
 	.img-right {
 		float: unset;
-		max-width: 250px;
 		margin: auto;
 		margin-bottom: 20px;
 	}	
